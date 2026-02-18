@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🚀 Vérification avant commit..."
+npx lint-staged
+npm run type-check # On s'assure que le build TS ne casse pas

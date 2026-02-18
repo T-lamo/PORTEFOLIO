@@ -1,0 +1,26 @@
+[build]
+  # La commande que Netlify va lancer (ton Makefile est utile ici !)
+  command = "make setup  && make build"
+  # Le dossier que Netlify doit servir
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--version"
+
+[[redirects]]
+  # Crucial pour React Router : redirige toutes les routes vers index.html
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  # Optimisation des performances et sécurité
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Cache agressif pour les assets immuables de Vite
+    Cache-Control = "public, max-age=31536000, immutable"
