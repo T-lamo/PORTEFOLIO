@@ -14,6 +14,8 @@ export const heroTexts = {
     "Ingénieur avec 2 ans d'expérience au sein d'environnements industriels exigeants (Airbus, Anakeen). Je me spécialise dans la conception d'architectures web scalables et d'interfaces fluides. Passionné par l'innovation technique, j'allie rigueur professionnelle et créativité à travers des projets ambitieux. Disponible pour des missions de Projet ou un CDI.",
   ctaPrimary: "Voir mes projets",
   ctaSecondary: "Me contacter",
+  Tel: "06 52 34 56 78",
+  Email: "amosdorceus2010@gmail.com",
 };
 
 export const projects = [
