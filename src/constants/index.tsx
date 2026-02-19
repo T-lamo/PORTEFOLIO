@@ -1,4 +1,18 @@
-// src/constants/index.ts
+// 1. IMPORT DES ASSETS (Indispensable pour Vite & Netlify)
+import cvBuilderMain from "../assets/projects/cv-builder-capture.png";
+import decatCommande from "../assets/projects/decat-commande.png";
+import decatDetails from "../assets/projects/decat-details.png";
+import decatMain from "../assets/projects/decat-main.png";
+import desevNetMain from "../assets/projects/desev-net.png";
+import digiJira from "../assets/projects/digi-jira-board.png";
+import digiMain from "../assets/projects/digi-swagger.png";
+import digiWorkflow from "../assets/projects/digi-workflow.png";
+import mlaMain from "../assets/projects/mla-api-example.png";
+import mlaJira from "../assets/projects/mla-jira-board.png";
+import mlaSchema from "../assets/projects/mla-schema-db.png";
+import portFolioMain from "../assets/projects/port_folio.png";
+import portJira from "../assets/projects/port_jira.png";
+import portUserStory from "../assets/projects/port_user_story.png";
 
 export const navLinks = [
   { id: "about", title: "À propos" },
@@ -22,209 +36,114 @@ export const heroTexts = {
 export const projects = [
   {
     title: "Portfolio Professionnel - 2026",
-    description:
-      "Vitrine technologique interactive conçue pour mettre en avant mes compétences en ingénierie logicielle et data.",
+    description: "Vitrine technologique interactive conçue pour mettre en avant mes compétences.",
     longDescription:
-      "Développement de mon portfolio personnel utilisant une architecture moderne et optimisée. L'objectif était de créer une expérience utilisateur fluide tout en appliquant des concepts avancés de développement : gestion d'état, animations performantes et intégration continue.",
-    tags: [
-      "React",
-      "TypeScript",
-      "Three.js",
-      "MakeFile",
-      "Git",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vite",
-    ],
+      "Développement de mon portfolio personnel utilisant une architecture moderne et optimisée.",
+    tags: ["React", "TypeScript", "Three.js", "Tailwind CSS", "Framer Motion", "Vite"],
     link: "#",
-    githubUrl: "https://github.com/T-lamo/portfolio", // À adapter si besoin
-    liveUrl: "https://amosdorceus.netlify.app", // À adapter si besoin
-    image: "/src/assets/projects/port_folio.png",
-
+    githubUrl: "https://github.com/T-lamo/portfolio",
+    liveUrl: "https://amosdorceus.netlify.app",
+    image: portFolioMain,
     challenges: [
-      "Conception d'une interface responsive et immersive avec des animations haute performance (Framer Motion)",
-      "Optimisation des Web Vitals (SEO & Performance) pour un score Lighthouse proche de 100",
-      "Architecture de composants réutilisables et typage rigoureux avec TypeScript",
-      "Utilisation de l'IA pour l'optimisation du contenu et la génération de certains assets graphiques",
+      "Conception d'une interface responsive avec animations haute performance",
+      "Optimisation des Web Vitals pour un score Lighthouse proche de 100",
+      "Architecture de composants réutilisables",
     ],
-
-    results:
-      "Une plateforme élégante et rapide, servant de démonstration concrète de mes capacités en développement Front-end et en design système.",
-
+    results: "Une plateforme élégante et rapide servant de démonstration concrète.",
     detailedScreenshots: [
-      {
-        url: "src/assets/projects/port_jira.png",
-        // Correction : "jira" -> "Jira" (nom propre)
-        caption: "Organisation Jira du projet : gestion agile et suivi des tâches.",
-      },
-      {
-        url: "src/assets/projects/port_user_story.png",
-
-        caption: "Exemple de user story dans Jira pour la fonctionnalité de contact direct.",
-      },
+      { url: portJira, caption: "Organisation Jira du projet : gestion agile." },
+      { url: portUserStory, caption: "Exemple de user story dans Jira." },
     ],
   },
   {
     title: "MLA Planning - début 2026",
     description:
-      "Application de planification de ressources critiques pour le Ministère de la Louange (ICC), incluant un moteur de détection de conflits.",
+      "Application de planification de ressources critiques pour le Ministère de la Louange (ICC).",
     longDescription:
-      "Conception et développement d'une application pour la gestion des chantres et musiciens. Le cœur du projet réside dans son moteur de planning capable d'orchestrer les disponibilités, les compétences (voix/instruments) et les contraintes de service pour plus de 500 utilisateurs.",
-    tags: [
-      "FastAPI",
-      "Vue.js",
-      "PostgreSQL",
-      "FullCalendar",
-      "Jira",
-      "Scrum",
-      "SQLModel",
-      "JWT",
-      "Tailwind CSS",
-      "Docker",
-      "Makefile",
-      "Tests unitaires",
-      "Git",
-    ],
+      "Conception et développement d'une application pour la gestion des chantres et musiciens.",
+    tags: ["FastAPI", "Vue.js", "PostgreSQL", "Docker", "Jira"],
     link: "#",
     githubUrl: "https://github.com/T-lamo/mla-planning",
     liveUrl: "https://mla-planning.render.com",
-    image: "src/assets/projects/mla-api-example.png",
-
+    image: mlaMain,
     challenges: [
-      "Conception d'une architecture conçue pour être scalable afin de supporter plusieurs campus ICC",
-      "Développement d'un 'Moteur de Collision Temporelle' pour empêcher les doubles affectations et respecter les indisponibilités (RG-01)",
-      "Gestion fine des accès (RBAC) : sécurisation des endpoints selon les rôles (Admin, Responsable, Chantre)",
-      "Optimisation des performances : utilisation de 'joinedload' pour résoudre le problème des requêtes N+1 sur les plannings mensuels",
-      "Gestion proactive de la dette technique et assurance qualité assistée par IA (Pylint, analyse de complexité)",
+      "Conception d'une architecture scalable",
+      "Développement d'un 'Moteur de Collision Temporelle'",
+      "Gestion fine des accès (RBAC)",
     ],
-
-    results:
-      "Système robuste avec transition de statuts (Brouillon -> Publié -> Clôturé), garantissant 100 % de fiabilité dans la programmation des équipes et automatisant les notifications de service.",
-
+    results: "Système robuste garantissant 100 % de fiabilité.",
     detailedScreenshots: [
-      {
-        url: "src/assets/projects/mla-api-example.png",
-        caption: "Exemple de réponse d'API REST avec documentation Swagger.",
-      },
-      {
-        url: "src/assets/projects/mla-jira-board.png",
-        caption: "Vue Calendrier : consultation des activités et gestion des slots d'affectation.",
-      },
-      {
-        url: "src/assets/projects/mla-schema-db.png",
-        caption: "Architecture de données SQL de l'application.",
-      },
+      { url: mlaMain, caption: "Exemple de réponse d'API REST." },
+      { url: mlaJira, caption: "Scrums organisés via Jira." },
+      { url: mlaSchema, caption: "Architecture de données SQL." },
     ],
   },
   {
     title: "Digicheese - Refonte SI Fidélité - Janvier 2026",
-    description:
-      "Modernisation d'un système legacy Access/VBA vers une architecture API REST Python sécurisée.",
+    description: "Modernisation d'un système legacy Access/VBA vers API REST Python sécurisée.",
     longDescription:
-      "Projet critique de transformation numérique visant à remplacer un système obsolète vieux de 20 ans par une solution robuste, évolutive et sécurisée. L'enjeu principal était de garantir la continuité métier tout en implémentant des standards de sécurité modernes (OWASP).",
+      "Projet critique de transformation numérique visant à remplacer un système obsolète.",
     tags: ["Python", "FastAPI", "MySQL", "JWT", "Docker"],
     link: "#",
     githubUrl: "https://github.com/T-lamo/DIGICHEES_APP",
     liveUrl: "https://digichees-app-1.onrender.com/docs",
-    image: "src/assets/projects/digi-swagger.png",
-
+    image: digiMain,
     challenges: [
-      "Conception d'une architecture en couches (Routes → Services → Repositories) pour une testabilité maximale",
-      "Sécurisation des données sensibles via hachage Argon2 et gestion fine des rôles (RBAC)",
-      "Migration et modélisation de données complexes depuis un système Legacy (Access/VBA)",
-      "Automatisation de la qualité logicielle : tests unitaires, d'intégration et analyse de complexité cyclomatique (Radon)",
+      "Architecture en couches pour testabilité maximale",
+      "Sécurisation via hachage Argon2",
+      "Migration de données complexes",
     ],
-
-    results:
-      "Livraison d'un socle API REST 100 % fonctionnel, sécurisé selon les recommandations OWASP, avec une documentation Swagger interactive et une suite de tests automatisée validant l'ensemble des règles métier.",
-
+    results: "Livraison d'un socle API REST 100 % fonctionnel et sécurisé.",
     detailedScreenshots: [
-      {
-        url: "src/assets/projects/digi-swagger.png",
-        caption: "Documentation OpenAPI/Swagger générée automatiquement pour l'interopérabilité.",
-      },
-      {
-        url: "src/assets/projects/digi-workflow.png",
-        caption:
-          "Architecture de sécurité : flux d'authentification JWT et contrôle d'accès par rôles.",
-      },
-      {
-        url: "src/assets/projects/digi-jira-board.png",
-        caption: "Gestion de projet Agile via Jira : suivi des sprints et des User Stories.",
-      },
+      { url: digiMain, caption: "Documentation OpenAPI/Swagger." },
+      { url: digiWorkflow, caption: "Workflow de développement GitHub Actions." },
+      { url: digiJira, caption: "Gestion de projet Agile via Jira." },
     ],
   },
   {
     title: "E-Commerce Decathlon 2023",
-    description:
-      "Application type Decathlon avec gestion de catalogue dynamique et tunnel d'achat optimisé.",
+    description: "Application type Decathlon avec gestion de catalogue dynamique.",
     longDescription:
-      "Une plateforme e-commerce robuste conçue pour gérer des milliers de références produits. L'accent a été mis sur la performance du tunnel de commande et la réactivité de l'interface via Svelte. Le backend FastAPI assure des temps de réponse ultra-rapides pour les requêtes complexes de filtrage.",
+      "Plateforme e-commerce robuste conçue pour gérer des milliers de références produits.",
     tags: ["Svelte", "TypeScript", "PostgreSQL"],
     link: "#",
     githubUrl: "https://github.com/T-lamo/decathlon",
     liveUrl: "https://decathlon-test.netlify.app/",
-    image: "/src/assets/projects/decat-main.png",
-    challenges: [
-      "Gestion d'un panier d'achat persistant côté client/serveur",
-      "Optimisation du SEO pour les pages produits dynamiques",
-      "Mise en place d'une architecture micro-services pour le paiement",
-    ],
-    results:
-      "Une application fluide avec un temps de chargement inférieur à 1 s et un score Lighthouse de 98/100.",
+    image: decatMain,
+    challenges: ["Panier persistant", "Optimisation SEO", "Architecture micro-services"],
+    results: "Application fluide avec chargement < 1 s.",
     detailedScreenshots: [
-      {
-        url: "/src/assets/projects/decat-main.png",
-        caption: "Liste d'articles avec filtres dynamiques & système de profilage.",
-      },
-      {
-        url: "/projects/decat-commande.png",
-        caption: "Page de suivi de commande et gestion du panier.",
-      },
-      {
-        url: "/src/assets/projects/decat-details.png",
-        caption: "Page de détails produit.",
-      },
+      { url: decatMain, caption: "Liste d'articles avec filtres dynamiques." },
+      { url: decatCommande, caption: "Page de suivi de commande." },
+      { url: decatDetails, caption: "Page de détails produit." },
     ],
   },
   {
     title: "CV Builder Dynamique - 2024",
-    description:
-      "Outil de création de CV avec prévisualisation en temps réel et gestion d'état complexe (NgRx).",
+    description: "Outil de création de CV avec prévisualisation temps réel (NgRx).",
     longDescription:
-      "Un éditeur WYSIWYG permettant aux utilisateurs de construire des CV professionnels. L'application utilise NgRx pour maintenir la cohérence des données entre les multiples formulaires et la prévisualisation live. Exportation PDF haute fidélité intégrée.",
-    tags: ["Angular", "NgRx", "PrimeNg", "CSS/HTML"],
+      "Un éditeur WYSIWYG permettant aux utilisateurs de construire des CV professionnels.",
+    tags: ["Angular", "NgRx", "PrimeNg"],
     link: "#",
-    githubUrl:
-      "https://gitlab.com/cvbuilder1/cvbuilder-front/-/tree/cv-builder-editor-responsiveness?ref_type=heads",
+    githubUrl: "https://gitlab.com/cvbuilder1/cvbuilder-front",
     liveUrl: "https://cvbuilder-singlepage.netlify.app/cv/editor/about",
-    image: "/src/assets/projects/cv-builder-capture.png",
-    challenges: [
-      "Synchronisation en temps réel sans latence via NgRx",
-      "Mise en page dynamique complexe supportant plusieurs modèles",
-      "Exportation PDF fidèle au rendu navigateur (CSS Print)",
-    ],
-    results: "Projets personnels de développement pour la maîtrise de NgRx & Angular.",
+    image: cvBuilderMain,
+    challenges: ["Synchronisation temps réel NgRx", "Exportation PDF haute fidélité"],
+    results: "Projets personnels pour la maîtrise de NgRx & Angular.",
     detailedScreenshots: [],
   },
   {
     title: "Desevnet Graph Editor",
-    description:
-      "Éditeur de graphes interactif haute performance pour la simulation de réseaux électriques.",
+    description: "Éditeur de graphes interactif pour la simulation de réseaux électriques.",
     longDescription:
-      "Un outil technique destiné aux ingénieurs réseau. Il permet de modéliser des réseaux électriques complexes (Smart Grids) via une interface de dessin de graphes. Les calculs de flux de puissance sont déportés dans un moteur Rust pour une performance maximale.",
-    tags: ["Vue.js", "D3.js", "Leaflet", "Git"],
+      "Outil technique destiné aux ingénieurs réseau pour modéliser des Smart Grids.",
+    tags: ["Vue.js", "D3.js", "Leaflet"],
     link: "#",
     githubUrl: "https://github.com/votreuser/desevnet",
     liveUrl: "https://netgenerator.netlify.app/",
-    image: "/src/assets/projects/desev-net.png",
-    challenges: [
-      "Rendu fluide de milliers de nœuds et liens avec D3.js",
-      "Bridge de données haute performance",
-      "Algorithmes de détection de cycles et de topologie réseau",
-    ],
-    results:
-      "Réduction du temps de configuration d'un simulateur de bornes de recharge de véhicules électriques de 80 % grâce à une interface graphique intuitive et un moteur de calcul optimisé.",
+    image: desevNetMain,
+    challenges: ["Rendu D3.js fluide", "Algorithmes de topologie réseau"],
+    results: "Réduction du temps de configuration de 80 %.",
     detailedScreenshots: [],
   },
 ];
@@ -235,28 +154,24 @@ export const experiences = [
     role: "Data Engineer & IA",
     period: "Déc 2025 – Présent",
     icon: "education",
-    description:
-      "Conception et déploiement d'architectures de données robustes et de systèmes d'IA industrialisés.",
+    description: "Conception d'architectures de données et systèmes d'IA industrialisés.",
     keyTasks: [
-      "Développement de pipelines Big Data complexes (Spark, Kafka, Cassandra)",
-      "Conception et déploiement de modèles IA : Machine Learning & Deep Learning (NLP)",
-      "Industrialisation et supervision d'applications via Docker et CI/CD",
-      "Mise en œuvre d'un suivi de la qualité applicative assisté par l'IA",
-      "Pilotage de projets en méthodologie Agile (Scrum, Jira, Confluence)",
+      "Développement de pipelines Big Data complexes",
+      "Déploiement de modèles Machine Learning & NLP",
+      "Industrialisation via Docker et CI/CD",
     ],
-    stack: ["Python", "Prompt Engineering", "FastAPI", "Spark", "TensorFlow", "Docker", "Kafka"],
+    stack: ["Python", "FastAPI", "Spark", "TensorFlow", "Docker", "Kafka"],
   },
   {
     company: "Anakeen",
     role: "Développeur Fullstack",
     period: "Juin 2024 – Oct. 2025",
     icon: "work",
-    description:
-      "Refonte d'une bibliothèque de composants graphiques et ajout de fonctionnalités complexes.",
+    description: "Refonte d'une bibliothèque de composants graphiques.",
     keyTasks: [
-      "Migration stratégique de Vue 2 vers Vue 3",
-      "Développement d'une bibliothèque de composants UI",
-      "Rédaction de documentation interactive avec Storybook",
+      "Migration de Vue 2 vers Vue 3",
+      "Développement d'UI components",
+      "Documentation Storybook",
     ],
     stack: ["Vue.js 3", "PHP", "Storybook", "TypeScript"],
   },
@@ -265,12 +180,8 @@ export const experiences = [
     role: "Ingénieur Logiciel",
     period: "Sept. 2023 – Fév. 2024",
     icon: "work",
-    description: "Évolution d'un système PLM critique au sein du secteur aéronautique.",
-    keyTasks: [
-      "Implémentation de fonctionnalités métier complexes",
-      "Conception et exécution de plans de tests rigoureux",
-      "Maintenance corrective et évolutive du système",
-    ],
+    description: "Évolution d'un système PLM critique aéronautique.",
+    keyTasks: ["Features métier complexes", "Plans de tests", "Maintenance PLM"],
     stack: ["Java", "Angular", "TypeScript", "Scrum"],
   },
   {
@@ -278,26 +189,17 @@ export const experiences = [
     role: "Développeur Fullstack",
     period: "Juin 2022 – Juil. 2023",
     icon: "work",
-    description:
-      "Optimisation d'un simulateur de réseau de bornes de recharge pour véhicules électriques.",
-    keyTasks: [
-      "Développement d'un éditeur de graphes interactif",
-      "Amélioration de la configuration du simulateur",
-      "Maintenance évolutive et rédaction technique",
-    ],
-    stack: ["Rust", "Vue.js", "D3.js", "Linux", "Leaflet"],
+    description: "Optimisation d'un simulateur de réseau électrique.",
+    keyTasks: ["Éditeur de graphes interactif", "Maintenance évolutive", "Rédaction technique"],
+    stack: ["Rust", "Vue.js", "D3.js", "Leaflet"],
   },
   {
     company: "Avignon Université",
     role: "Master Ingénierie des Logiciels",
     period: "2021 – 2023",
     icon: "education",
-    description: "Formation approfondie en architecture logicielle et systèmes complexes.",
-    keyTasks: [
-      "Architecture logicielle avancée",
-      "Gestion de projets informatiques",
-      "Algorithmique et systèmes distribués",
-    ],
+    description: "Architecture logicielle et systèmes complexes.",
+    keyTasks: ["Architecture avancée", "Gestion de projets", "Algorithmique"],
     stack: ["Java", "Génie Logiciel", "Python"],
   },
   {
@@ -305,27 +207,17 @@ export const experiences = [
     role: "Développeur Informatique Santé",
     period: "Mars 2021 – Sept. 2021",
     icon: "work",
-    description:
-      "Participation au développement d'une plateforme de gestion hospitalière centralisée.",
-    keyTasks: [
-      "Implémentation de nouvelles fonctionnalités sur le module de suivi patient",
-      "Optimisation des requêtes côté serveur pour le traitement des dossiers médicaux",
-      "Maintenance corrective et amélioration de l'interface utilisateur (UI)",
-      "Collaboration en équipe sur la stack Angular/PHP pour assurer la disponibilité du service",
-    ],
-    stack: ["Angular", "PHP", "JavaScript", "SQL"],
+    description: "Plateforme de gestion hospitalière centralisée.",
+    keyTasks: ["Module suivi patient", "Optimisation serveurs", "UI Improvement"],
+    stack: ["Angular", "PHP", "SQL"],
   },
   {
     company: "ESIH Haïti",
     role: "Licence en Sciences Informatiques",
     period: "2016 – 2020",
     icon: "education",
-    description: "Double cursus en Sciences Informatiques et Gestion d'Entreprises.",
-    keyTasks: [
-      "Développement de logiciels fondamentaux",
-      "Entrepreneuriat et gestion de PME",
-      "Modélisation de bases de données SQL",
-    ],
-    stack: ["Java", "SQL", "HTML/CSS", "Gestion de projet"],
+    description: "Double cursus Informatique et Gestion.",
+    keyTasks: ["Software development", "Modélisation SQL", "Entrepreneuriat"],
+    stack: ["Java", "SQL", "HTML/CSS"],
   },
 ];
