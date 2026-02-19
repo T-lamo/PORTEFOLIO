@@ -39,7 +39,7 @@ export const projects = [
       "Une application fluide avec un temps de chargement inférieur à 1s et un score Lighthouse de 98/100.",
     detailedScreenshots: [
       {
-        url: "/projects/decat-main.png",
+        url: "/public/projects/decat-main.png",
         caption: "Liste d'articles avec filtres dynamiques & système de profiling.",
       },
       {
@@ -47,7 +47,7 @@ export const projects = [
         caption: "Page de suivi de commande et gestion du panier.",
       },
       {
-        url: "/projects/decat-details.png",
+        url: "/public/projects/decat-details.png",
         caption: "Page de détails produit.",
       },
     ],
