@@ -2,6 +2,7 @@ import { Suspense, useRef, useState } from "react";
 
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+// @ts-expect-error: maath lacks type definitions but is required for random points
 import * as random from "maath/random/dist/maath-random.esm";
 import * as THREE from "three";
 // @ts-expect-error: maath does not provide TS definitions for random

@@ -1,54 +1,49 @@
-// App.tsx
-import HeroSection from "@components/sections/Hero"; // Import du composant wrappé
+import HeroSection from "@components/sections/Hero";
+import ProjectsSection from "@components/sections/Projects";
 import { Button } from "@components/shared/Button";
 import { Navbar } from "@components/shared/Navbar";
 import { Send } from "lucide-react";
 
+// Imports des sections
+
+/**
+ * Composant Racine de l'application.
+ * La structure utilise un overflow-x-hidden pour éviter les problèmes de layout
+ * lors des animations d'entrée des composants motion.
+ */
 function App() {
   return (
     <main className="bg-background relative min-h-screen w-full overflow-x-hidden text-white">
-      {/* Barre de navigation fixe */}
+      {/* Barre de navigation fixe (Z-index élevé par défaut) */}
       <Navbar />
 
       <div className="flex w-full flex-col">
-        {/* SECTION HERO (Inclut l'ID "about", le Canvas et le SectionWrapper) */}
+        {/* SECTION HERO (ID: about) */}
         <HeroSection />
 
-        {/* SECTION PROJECTS 
-            Note : À terme, tu pourras créer @components/sections/Projects.tsx 
-            et le wrapper comme le Hero.
+        {/* SECTION PROJECTS (ID: projects) 
+            Désormais encapsulée dans ProjectsSection avec gestion de modales
         */}
-        <section
-          id="projects"
-          className="bg-surface/30 flex min-h-screen flex-col items-center justify-center border-b border-white/10 px-6"
-        >
-          <h2 className="text-center text-4xl font-black tracking-widest uppercase md:text-6xl">
-            Projets <span className="text-primary">Sélectionnés</span>
-          </h2>
-          <div className="bg-primary mt-6 h-1.5 w-24 rounded-full" />
+        <ProjectsSection />
 
-          <div className="mt-16 grid w-full max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Emplacement pour tes cartes de projets en Glassmorphism */}
-            <div className="glass-card flex h-64 items-center justify-center rounded-3xl text-white/20 italic">
-              Projet en cours de chargement...
-            </div>
-            <div className="glass-card flex h-64 items-center justify-center rounded-3xl text-white/20 italic">
-              Projet en cours de chargement...
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION CONTACT */}
+        {/* SECTION CONTACT (ID: contact)
+            Note : Tu pourras plus tard extraire cette section dans @components/sections/Contact.tsx
+        */}
         <section
           id="contact"
           className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
         >
           <h2 className="text-4xl font-black tracking-widest uppercase md:text-6xl">Contact</h2>
-          <p className="mt-6 max-w-lg text-lg text-gray-400">
+
+          <div className="bg-primary mt-6 mb-10 h-1.5 w-24 rounded-full" />
+
+          <p className="max-w-lg text-lg leading-relaxed text-white/50">
             Actuellement à la recherche d'une alternance en{" "}
-            <span className="font-bold text-white">Data Engineering & IA</span>.
+            <span className="font-bold text-white">Data Engineering & IA</span>. Ouvert aux
+            opportunités en CDI et projets ambitieux.
           </p>
-          <div className="mt-10">
+
+          <div className="mt-12">
             <Button
               label="Discutons de votre projet"
               Icon={Send}
