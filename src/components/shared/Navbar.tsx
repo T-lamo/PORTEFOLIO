@@ -88,11 +88,26 @@ export const Navbar = () => {
   );
 };
 
+// --- LOGO AVEC TON LOGO.PNG ---
 const Logo = () => (
-  <motion.div className="text-2xl font-black tracking-tighter">
-    <a href="#" className="group flex items-center gap-1">
-      <span className="text-primary group-hover:text-accent transition-colors">AD</span>
-      <span className="text-white">.dev</span>
+  <motion.div className="flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+    <a href="#" className="group flex items-center gap-3">
+      {/* Conteneur du logo */}
+      <div className="group-hover:border-primary/50 relative h-10 w-10 overflow-hidden rounded-lg border border-white/10 bg-white/5 transition-all">
+        <img
+          src="/logo.png"
+          alt="Amos Dorceus Logo"
+          className="h-full w-full object-contain p-1" // 'contain' pour ne pas déformer
+        />
+      </div>
+
+      {/* Texte à côté du logo */}
+      <div className="flex flex-col justify-center">
+        <span className="text-sm leading-none font-black tracking-tighter text-white">
+          AMOS<span className="text-primary">.</span>
+        </span>
+        <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">Dev</span>
+      </div>
     </a>
   </motion.div>
 );
@@ -147,7 +162,6 @@ const MobileMenu = ({
     exit="closed"
     className="bg-background/80 fixed inset-0 z-50 flex flex-col items-center justify-center p-6 backdrop-blur-[20px]"
   >
-    {/* Décoration d'arrière-plan pour le Glassmorphism mobile */}
     <div className="bg-primary/20 absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
 
     <ul className="flex flex-col items-center gap-8">
