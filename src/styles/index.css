@@ -1,34 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* En nommant tes variables avec --color-*, Tailwind v4 crée les classes automatiquement */
   --color-background: #050505;
   --color-surface: #101012;
   --color-primary: #6366f1;
-  --color-secondary: #a855f7;
   --color-accent: #00f2ff;
 
-  /* On définit aussi les animations directement ici */
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
+  /* Variables Glassmorphism */
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --blur-glass: 12px;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-white antialiased;
     font-family: "Inter", sans-serif;
-    margin: 0;
   }
 }
 
-/* Plus besoin de .btn-test complexe, tu peux maintenant faire : */
-/* <button className="bg-primary px-4 py-2 rounded-lg"> */
+/* Classe utilitaire réutilisable */
+.glass-card {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}

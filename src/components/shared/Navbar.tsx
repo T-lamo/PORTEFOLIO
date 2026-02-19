@@ -1,67 +1,172 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
-import { navLinks } from "@constants/index";
-import { motion } from "framer-motion";
+import { navLinks } from "@constants";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+import { menuVariants, linkVariants } from "@/constants/Navbar.animations";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { useScroll } from "@/hooks/useScroll";
+import type { NavLink } from "@/types/index";
+
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  const isScrolled = useScroll(20);
+  const sectionIds = useMemo(() => navLinks.map((l) => l.id), []);
+  const activeSectionFromScroll = useActiveSection(sectionIds);
+
+  const [clickedSection, setClickedSection] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Dérivation d'état pour éviter les rendus en cascade
+  const activeSection = clickedSection || activeSectionFromScroll || (navLinks[0]?.id ?? "about");
+
+  if (clickedSection === activeSectionFromScroll && clickedSection !== null) {
+    setClickedSection(null);
+  }
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
+  }, [isOpen]);
+
+  const handleNavClick = useCallback((id: string) => {
+    setClickedSection(id);
+    setIsOpen(false);
   }, []);
 
   return (
-    <nav
-      className={`fixed z-50 w-full py-4 transition-all duration-300 ${scrolled ? "bg-background/80 shadow-lg backdrop-blur-md" : "bg-transparent"}`}
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className={`fixed top-0 z-50 w-full py-4 transition-all duration-500 ${
+        isScrolled
+          ? "bg-background/60 border-b border-white/10 shadow-2xl backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-        <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          className="text-primary text-xl font-bold"
-        >
-          AD <span className="text-white">.dev</span>
-        </motion.div>
+        <Logo />
 
-        {/* Desktop Menu */}
-        <ul className="hidden gap-8 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a href={`#${link.id}`} className="hover:text-accent text-gray-300 transition-colors">
-                {link.title}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop Navigation - Style "Pill" Glassmorphism */}
+        <LayoutGroup id="nav-pill">
+          <ul className="hidden items-center gap-1 rounded-full border border-white/5 bg-white/5 p-1 backdrop-blur-sm md:flex">
+            {navLinks.map((link, index) => (
+              <DesktopNavItem
+                key={link.id}
+                link={link}
+                index={index}
+                isActive={activeSection === link.id}
+                onClick={() => handleNavClick(link.id)}
+              />
+            ))}
+          </ul>
+        </LayoutGroup>
 
-        {/* Mobile Menu */}
+        {/* Mobile Toggle */}
         <div className="flex items-center md:hidden">
-          <button onClick={() => setToggle(!toggle)}>{toggle ? <X /> : <Menu />}</button>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="z-[60] cursor-pointer rounded-full border border-white/10 bg-white/5 p-2 text-white backdrop-blur-md"
+          >
+            <motion.div animate={{ rotate: isOpen ? 90 : 0 }}>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
-      {toggle && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-surface absolute top-full left-0 w-full p-6 md:hidden"
-        >
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.id} onClick={() => setToggle(false)}>
-                <a href={`#${link.id}`} className="text-lg text-white">
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {isOpen && (
+          <MobileMenu
+            links={navLinks}
+            activeSection={activeSection}
+            onClose={() => setIsOpen(false)}
+            onSelect={handleNavClick}
+          />
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
+
+const Logo = () => (
+  <motion.div className="text-2xl font-black tracking-tighter">
+    <a href="#" className="group flex items-center gap-1">
+      <span className="text-primary group-hover:text-accent transition-colors">AD</span>
+      <span className="text-white">.dev</span>
+    </a>
+  </motion.div>
+);
+
+const DesktopNavItem = ({
+  link,
+  isActive,
+  onClick,
+}: {
+  link: NavLink;
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+}) => (
+  <li className="relative">
+    <a
+      href={`#${link.id}`}
+      onClick={onClick}
+      className={`relative z-10 block px-4 py-2 text-[10px] font-bold uppercase transition-all duration-300 ${
+        isActive ? "text-white" : "text-white/40 hover:text-white"
+      }`}
+      style={{ letterSpacing: isActive ? "0.2em" : "0.1em" }}
+    >
+      {link.title}
+    </a>
+
+    {isActive && (
+      <motion.div
+        layoutId="nav-active-bg"
+        className="absolute inset-0 z-0 rounded-full border border-white/10 bg-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
+        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+      />
+    )}
+  </li>
+);
+
+const MobileMenu = ({
+  links,
+  activeSection,
+  onClose,
+  onSelect,
+}: {
+  links: NavLink[];
+  activeSection: string;
+  onClose: () => void;
+  onSelect: (id: string) => void;
+}) => (
+  <motion.div
+    variants={menuVariants}
+    initial="closed"
+    animate="opened"
+    exit="closed"
+    className="bg-background/80 fixed inset-0 z-50 flex flex-col items-center justify-center p-6 backdrop-blur-[20px]"
+  >
+    {/* Décoration d'arrière-plan pour le Glassmorphism mobile */}
+    <div className="bg-primary/20 absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
+
+    <ul className="flex flex-col items-center gap-8">
+      {links.map((link) => (
+        <motion.li key={link.id} variants={linkVariants}>
+          <a
+            href={`#${link.id}`}
+            onClick={() => {
+              onSelect(link.id);
+              onClose();
+            }}
+            className={`block text-4xl font-black tracking-tighter transition-all duration-300 sm:text-5xl ${
+              activeSection === link.id ? "text-primary scale-110" : "text-white/20"
+            }`}
+          >
+            {link.title}
+          </a>
+        </motion.li>
+      ))}
+    </ul>
+  </motion.div>
+);

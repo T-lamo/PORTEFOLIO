@@ -12,39 +12,46 @@ YELLOW = \033[1;33m
 RED    = \033[1;31m
 RESET  = \033[0m
 
-.PHONY: help setup dev build lint format check clean doctor
+.PHONY: help setup dev build lint format check clean clean-cache clean-js doctor
 
 help: ## Affiche cette aide
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-setup: ## Installation propre des dépendances et outils de qualité
+setup: ## Installation propre des dépendances
 	@echo "$(BLUE)Installation des dépendances...$(RESET)"
 	$(NPM) install
 
-dev: clean-cache ## Lance le serveur de dev (nettoie le cache auto)
+dev: clean-js clean-cache ## Lance le serveur de dev (nettoie JS et cache auto)
 	@echo "$(GREEN)Démarrage du serveur local...$(RESET)"
 	$(NPM) run dev
 
-build: check ## Build de production (lance un check complet avant)
+build: check ## Build de production
 	@echo "$(GREEN)Compilation pour la production...$(RESET)"
 	$(NPM) run build
 
-lint: ## Analyse statique du code (ESLint)
+lint: ## Analyse statique du code
 	@echo "$(BLUE)Analyse du code...$(RESET)"
 	$(ESLINT) src --ext .ts,.tsx --fix
 
-format: ## Formate le code et trie les classes Tailwind (Prettier)
+format: ## Formate le code (Prettier)
 	@echo "$(BLUE)Formatage du code...$(RESET)"
 	$(PRETTIER) --write "src/**/*.{ts,tsx,css,json}"
 
 check: ## Vérification totale : Types + Lint + Format
 	@echo "$(YELLOW)Vérification globale en cours...$(RESET)"
-	$(TSC) --build
+	$(TSC) --noEmit
 	@$(MAKE) lint
 	@$(MAKE) format
 	@echo "$(GREEN)Qualité de code validée !$(RESET)"
 
-clean: ## Nettoyage complet (dist, node_modules, cache)
+clean-js: ## Supprime les fichiers .js et .js.map générés par erreur dans src/
+	@echo "$(RED)Suppression des fichiers parasites (.js et .d.ts) dans src/...$(RESET)"
+	find src -name "*.js" -type f -delete
+	find src -name "*.d.ts" -type f -delete
+	find src -name "*.js.map" -type f -delete
+	@echo "$(GREEN)Nettoyage terminé.$(RESET)"
+
+clean: clean-js ## Nettoyage complet (dist, node_modules, cache, JS générés)
 	@echo "$(RED)Suppression des dossiers de build et dépendances...$(RESET)"
 	rm -rf dist node_modules .vite
 	@echo "$(GREEN)Projet remis à zéro.$(RESET)"
@@ -55,8 +62,5 @@ clean-cache: ## Nettoyage du cache Vite
 
 doctor: ## Diagnostic du système
 	@echo "$(BLUE)Diagnostic de l'environnement :$(RESET)"
-	@printf "Node: " && node -v
-	@printf "NPM:  " && npm -v
-	@printf "Vite: " && $(VITE) -v
-
-ci: setup check build ## Commande utilisée par GitHub Actions
+	@node -v
+	@npm -v
