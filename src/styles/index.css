@@ -5,27 +5,25 @@
   --color-surface: #101012;
   --color-primary: #6366f1;
   --color-accent: #00f2ff;
-
-  /* Variables Glassmorphism */
-  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-bg: rgba(255, 255, 255, 0.02);
   --color-glass-border: rgba(255, 255, 255, 0.08);
-  --blur-glass: 12px;
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
   body {
     @apply bg-background text-white antialiased;
     font-family: "Inter", sans-serif;
   }
 }
 
-/* Classe utilitaire réutilisable */
 .glass-card {
   background: var(--color-glass-bg);
-  backdrop-filter: blur(var(--blur-glass));
+  backdrop-filter: blur(12px);
   border: 1px solid var(--color-glass-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Scrollbar invisible mais fonctionnelle */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

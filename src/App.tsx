@@ -1,63 +1,60 @@
 // App.tsx
+import HeroSection from "@components/sections/Hero"; // Import du composant wrappé
 import { Button } from "@components/shared/Button";
 import { Navbar } from "@components/shared/Navbar";
-import { heroTexts } from "@constants";
-import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 
 function App() {
   return (
-    <main className="bg-background relative min-h-screen w-full text-white">
+    <main className="bg-background relative min-h-screen w-full overflow-x-hidden text-white">
+      {/* Barre de navigation fixe */}
       <Navbar />
 
       <div className="flex w-full flex-col">
-        {/* SECTION ABOUT (Sert de Hero ici) */}
-        <section
-          id="about"
-          className="flex h-screen flex-col items-center justify-center border-b border-white/10 px-6 text-center"
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-4 text-6xl font-black md:text-8xl"
-          >
-            {heroTexts.name}
-          </motion.h1>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-primary mb-6 text-xl font-bold tracking-[0.3em] uppercase md:text-2xl"
-          >
-            {heroTexts.role}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="mx-auto mb-10 max-w-2xl text-lg text-gray-400"
-          >
-            {heroTexts.description}
-          </motion.p>
-          <Button label="Me contacter" Icon={Send} variant="primary" />
-        </section>
+        {/* SECTION HERO (Inclut l'ID "about", le Canvas et le SectionWrapper) */}
+        <HeroSection />
 
-        {/* SECTION PROJECTS */}
+        {/* SECTION PROJECTS 
+            Note : À terme, tu pourras créer @components/sections/Projects.tsx 
+            et le wrapper comme le Hero.
+        */}
         <section
           id="projects"
-          className="bg-surface/30 flex h-screen flex-col items-center justify-center border-b border-white/10"
+          className="bg-surface/30 flex min-h-screen flex-col items-center justify-center border-b border-white/10 px-6"
         >
-          <h2 className="text-4xl font-black tracking-widest uppercase md:text-6xl">Projets</h2>
-          <div className="bg-primary mt-4 h-1 w-20" />
-          <p className="mt-8 text-gray-400 italic">Défilement en cours de détection...</p>
+          <h2 className="text-center text-4xl font-black tracking-widest uppercase md:text-6xl">
+            Projets <span className="text-primary">Sélectionnés</span>
+          </h2>
+          <div className="bg-primary mt-6 h-1.5 w-24 rounded-full" />
+
+          <div className="mt-16 grid w-full max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {/* Emplacement pour tes cartes de projets en Glassmorphism */}
+            <div className="glass-card flex h-64 items-center justify-center rounded-3xl text-white/20 italic">
+              Projet en cours de chargement...
+            </div>
+            <div className="glass-card flex h-64 items-center justify-center rounded-3xl text-white/20 italic">
+              Projet en cours de chargement...
+            </div>
+          </div>
         </section>
 
         {/* SECTION CONTACT */}
-        <section id="contact" className="flex h-screen flex-col items-center justify-center">
+        <section
+          id="contact"
+          className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
+        >
           <h2 className="text-4xl font-black tracking-widest uppercase md:text-6xl">Contact</h2>
-          <p className="mt-6 text-gray-400">Prêt à démarrer un projet ?</p>
+          <p className="mt-6 max-w-lg text-lg text-gray-400">
+            Actuellement à la recherche d'une alternance en{" "}
+            <span className="font-bold text-white">Data Engineering & IA</span>.
+          </p>
           <div className="mt-10">
-            <Button label="Envoyer un message" Icon={Send} variant="outline" />
+            <Button
+              label="Discutons de votre projet"
+              Icon={Send}
+              variant="primary"
+              onClick={() => (window.location.href = "mailto:amosdorceus2010@gmail.com")}
+            />
           </div>
         </section>
       </div>
