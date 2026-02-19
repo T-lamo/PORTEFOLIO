@@ -1,10 +1,15 @@
+// src/components/shared/SectionWrapper.tsx
+import React from "react";
+
 import { motion } from "framer-motion";
 
 import { staggerContainer } from "../../utils/motion";
 
-export const SectionWrapper = (Component: React.FC, idName: string) => {
-  // On nomme la fonction pour corriger "Fast refresh can't handle anonymous components"
-  const HOC = () => {
+export const SectionWrapper = <P extends object>(
+  Component: React.ComponentType<P>,
+  idName: string
+) => {
+  const HOC = (props: P) => {
     return (
       <motion.section
         variants={staggerContainer()}
@@ -17,7 +22,7 @@ export const SectionWrapper = (Component: React.FC, idName: string) => {
         <span className="hash-span" id={idName}>
           &nbsp;
         </span>
-        <Component />
+        <Component {...props} />
       </motion.section>
     );
   };

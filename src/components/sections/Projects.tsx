@@ -1,17 +1,16 @@
 // src/components/sections/Projects.tsx
-import { useState } from "react";
-
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { ProjectCard } from "./ProjectCard";
-import ProjectModal from "./ProjectModal"; // À créer ensuite
 import { projects } from "../../constants";
 import type { Project } from "../../types";
 import { SectionWrapper } from "../shared/SectionWrapper";
 
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+interface ProjectsProps {
+  onSelectProject: (project: Project) => void;
+}
 
+const Projects = ({ onSelectProject }: ProjectsProps) => {
   return (
     <div className="w-full">
       <motion.div className="flex flex-col items-center">
@@ -27,17 +26,10 @@ const Projects = () => {
             key={project.title}
             index={index}
             project={project as Project}
-            onClick={() => setSelectedProject(project as Project)}
+            onClick={() => onSelectProject(project as Project)}
           />
         ))}
       </div>
-
-      {/* Gestion de la Modale */}
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-        )}
-      </AnimatePresence>
     </div>
   );
 };

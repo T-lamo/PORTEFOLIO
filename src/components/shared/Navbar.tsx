@@ -1,3 +1,5 @@
+// src/components/shared/Navbar.tsx
+
 import { useState, useEffect, useCallback, useMemo } from "react";
 
 import { navLinks } from "@constants";
@@ -17,7 +19,6 @@ export const Navbar = () => {
   const [clickedSection, setClickedSection] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Dérivation d'état pour éviter les rendus en cascade
   const activeSection = clickedSection || activeSectionFromScroll || (navLinks[0]?.id ?? "about");
 
   if (clickedSection === activeSectionFromScroll && clickedSection !== null) {
@@ -46,18 +47,19 @@ export const Navbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <Logo />
 
-        {/* Desktop Navigation - Style "Pill" Glassmorphism */}
+        {/* Desktop Navigation - ON FILTRE 'experience' ICI */}
         <LayoutGroup id="nav-pill">
           <ul className="hidden items-center gap-1 rounded-full border border-white/5 bg-white/5 p-1 backdrop-blur-sm md:flex">
-            {navLinks.map((link, index) => (
-              <DesktopNavItem
-                key={link.id}
-                link={link}
-                index={index}
-                isActive={activeSection === link.id}
-                onClick={() => handleNavClick(link.id)}
-              />
-            ))}
+            {navLinks
+              .filter((link) => link.id !== "experience") // Masqué sur Desktop
+              .map((link, _index) => (
+                <DesktopNavItem
+                  key={link.id}
+                  link={link}
+                  isActive={activeSection === link.id}
+                  onClick={() => handleNavClick(link.id)}
+                />
+              ))}
           </ul>
         </LayoutGroup>
 
@@ -77,7 +79,7 @@ export const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <MobileMenu
-            links={navLinks}
+            links={navLinks} // On garde tous les liens pour le mobile
             activeSection={activeSection}
             onClose={() => setIsOpen(false)}
             onSelect={handleNavClick}
@@ -88,20 +90,13 @@ export const Navbar = () => {
   );
 };
 
-// --- LOGO AVEC TON LOGO.PNG ---
+// --- LOGO ---
 const Logo = () => (
   <motion.div className="flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
     <a href="#" className="group flex items-center gap-3">
-      {/* Conteneur du logo */}
       <div className="group-hover:border-primary/50 relative h-10 w-10 overflow-hidden rounded-lg border border-white/10 bg-white/5 transition-all">
-        <img
-          src="/logo.png"
-          alt="Amos Dorceus Logo"
-          className="h-full w-full object-contain p-1" // 'contain' pour ne pas déformer
-        />
+        <img src="/logo.png" alt="Logo" className="h-full w-full object-contain p-1" />
       </div>
-
-      {/* Texte à côté du logo */}
       <div className="flex flex-col justify-center">
         <span className="text-sm leading-none font-black tracking-tighter text-white">
           AMOS<span className="text-primary">.</span>
@@ -112,13 +107,13 @@ const Logo = () => (
   </motion.div>
 );
 
+// --- DESKTOP ITEM ---
 const DesktopNavItem = ({
   link,
   isActive,
   onClick,
 }: {
   link: NavLink;
-  index: number;
   isActive: boolean;
   onClick: () => void;
 }) => (
@@ -129,21 +124,20 @@ const DesktopNavItem = ({
       className={`relative z-10 block px-4 py-2 text-[10px] font-bold uppercase transition-all duration-300 ${
         isActive ? "text-white" : "text-white/40 hover:text-white"
       }`}
-      style={{ letterSpacing: isActive ? "0.2em" : "0.1em" }}
     >
       {link.title}
     </a>
-
     {isActive && (
       <motion.div
         layoutId="nav-active-bg"
-        className="absolute inset-0 z-0 rounded-full border border-white/10 bg-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
+        className="absolute inset-0 z-0 rounded-full border border-white/10 bg-white/10"
         transition={{ type: "spring", stiffness: 350, damping: 30 }}
       />
     )}
   </li>
 );
 
+// --- MOBILE MENU (Ajusté pour être moins massif) ---
 const MobileMenu = ({
   links,
   activeSection,
@@ -160,27 +154,37 @@ const MobileMenu = ({
     initial="closed"
     animate="opened"
     exit="closed"
-    className="bg-background/80 fixed inset-0 z-50 flex flex-col items-center justify-center p-6 backdrop-blur-[20px]"
+    // Correction ici : h-[100dvh] pour éviter les bugs de barre d'adresse mobile
+    // overflow-hidden pour empêcher le scroll parasite derrière
+    className="bg-background/95 fixed inset-0 z-50 flex h-[100dvh] w-full flex-col items-center justify-center p-6 backdrop-blur-[15px]"
   >
-    <div className="bg-primary/20 absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
+    {/* Fond lumineux centré */}
+    <div className="bg-primary/20 absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]" />
 
-    <ul className="flex flex-col items-center gap-8">
-      {links.map((link) => (
-        <motion.li key={link.id} variants={linkVariants}>
-          <a
-            href={`#${link.id}`}
-            onClick={() => {
-              onSelect(link.id);
-              onClose();
-            }}
-            className={`block text-4xl font-black tracking-tighter transition-all duration-300 sm:text-5xl ${
-              activeSection === link.id ? "text-primary scale-110" : "text-white/20"
-            }`}
-          >
-            {link.title}
-          </a>
-        </motion.li>
-      ))}
-    </ul>
+    {/* Conteneur de la liste : on s'assure qu'il ne déborde pas */}
+    <nav className="relative flex w-full flex-col items-center justify-center">
+      <ul className="flex flex-col items-center gap-8">
+        {links.map((link) => (
+          <motion.li key={link.id} variants={linkVariants}>
+            <a
+              href={`#${link.id}`}
+              onClick={() => {
+                // Empêcher le comportement par défaut pour gérer le scroll manuellement
+                onSelect(link.id);
+                onClose();
+              }}
+              // Taille réduite text-3xl pour éviter les chevauchements sur petits écrans
+              className={`block text-3xl font-black tracking-tight transition-all duration-300 sm:text-4xl ${
+                activeSection === link.id
+                  ? "text-primary scale-110"
+                  : "text-white/40 hover:text-white"
+              }`}
+            >
+              {link.title}
+            </a>
+          </motion.li>
+        ))}
+      </ul>
+    </nav>
   </motion.div>
 );
