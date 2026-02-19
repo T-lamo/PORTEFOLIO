@@ -1,5 +1,4 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+
 
 echo "🚀 Vérification avant commit..."
 npx lint-staged
