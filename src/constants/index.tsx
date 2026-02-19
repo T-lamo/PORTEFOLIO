@@ -39,7 +39,7 @@ export const projects = [
     link: "#",
     githubUrl: "https://github.com/T-lamo/portfolio", // À adapter si besoin
     liveUrl: "https://amosdorceus.netlify.app", // À adapter si besoin
-    image: "/public/projects/port_folio.png",
+    image: "/src/assets/projects/port_folio.png",
 
     challenges: [
       "Conception d'une interface responsive et immersive avec des animations haute performance (Framer Motion)",
@@ -53,12 +53,12 @@ export const projects = [
 
     detailedScreenshots: [
       {
-        url: "public/projects/port_jira.png",
+        url: "src/assets/projects/port_jira.png",
         // Correction : "jira" -> "Jira" (nom propre)
         caption: "Organisation Jira du projet : gestion agile et suivi des tâches.",
       },
       {
-        url: "public/projects/port_user_story.png",
+        url: "src/assets/projects/port_user_story.png",
 
         caption: "Exemple de user story dans Jira pour la fonctionnalité de contact direct.",
       },
@@ -88,7 +88,7 @@ export const projects = [
     link: "#",
     githubUrl: "https://github.com/T-lamo/mla-planning",
     liveUrl: "https://mla-planning.render.com",
-    image: "public/projects/mla-api-example.png",
+    image: "src/assets/projects/mla-api-example.png",
 
     challenges: [
       "Conception d'une architecture conçue pour être scalable afin de supporter plusieurs campus ICC",
@@ -103,15 +103,15 @@ export const projects = [
 
     detailedScreenshots: [
       {
-        url: "public/projects/mla-api-example.png",
+        url: "src/assets/projects/mla-api-example.png",
         caption: "Exemple de réponse d'API REST avec documentation Swagger.",
       },
       {
-        url: "public/projects/mla-jira-board.png",
+        url: "src/assets/projects/mla-jira-board.png",
         caption: "Vue Calendrier : consultation des activités et gestion des slots d'affectation.",
       },
       {
-        url: "public/projects/mla-schema-db.png",
+        url: "src/assets/projects/mla-schema-db.png",
         caption: "Architecture de données SQL de l'application.",
       },
     ],
@@ -126,7 +126,7 @@ export const projects = [
     link: "#",
     githubUrl: "https://github.com/T-lamo/DIGICHEES_APP",
     liveUrl: "https://digichees-app-1.onrender.com/docs",
-    image: "public/projects/digi-swagger.png",
+    image: "src/assets/projects/digi-swagger.png",
 
     challenges: [
       "Conception d'une architecture en couches (Routes → Services → Repositories) pour une testabilité maximale",
@@ -140,16 +140,16 @@ export const projects = [
 
     detailedScreenshots: [
       {
-        url: "public/projects/digi-swagger.png",
+        url: "src/assets/projects/digi-swagger.png",
         caption: "Documentation OpenAPI/Swagger générée automatiquement pour l'interopérabilité.",
       },
       {
-        url: "public/projects/digi-workflow.png",
+        url: "src/assets/projects/digi-workflow.png",
         caption:
           "Architecture de sécurité : flux d'authentification JWT et contrôle d'accès par rôles.",
       },
       {
-        url: "public/projects/digi-jira-board.png",
+        url: "src/assets/projects/digi-jira-board.png",
         caption: "Gestion de projet Agile via Jira : suivi des sprints et des User Stories.",
       },
     ],
@@ -164,7 +164,7 @@ export const projects = [
     link: "#",
     githubUrl: "https://github.com/T-lamo/decathlon",
     liveUrl: "https://decathlon-test.netlify.app/",
-    image: "/public/projects/decat-main.png",
+    image: "/src/assets/projects/decat-main.png",
     challenges: [
       "Gestion d'un panier d'achat persistant côté client/serveur",
       "Optimisation du SEO pour les pages produits dynamiques",
@@ -174,7 +174,7 @@ export const projects = [
       "Une application fluide avec un temps de chargement inférieur à 1 s et un score Lighthouse de 98/100.",
     detailedScreenshots: [
       {
-        url: "/public/projects/decat-main.png",
+        url: "/src/assets/projects/decat-main.png",
         caption: "Liste d'articles avec filtres dynamiques & système de profilage.",
       },
       {
@@ -182,7 +182,7 @@ export const projects = [
         caption: "Page de suivi de commande et gestion du panier.",
       },
       {
-        url: "/public/projects/decat-details.png",
+        url: "/src/assets/projects/decat-details.png",
         caption: "Page de détails produit.",
       },
     ],
@@ -198,7 +198,7 @@ export const projects = [
     githubUrl:
       "https://gitlab.com/cvbuilder1/cvbuilder-front/-/tree/cv-builder-editor-responsiveness?ref_type=heads",
     liveUrl: "https://cvbuilder-singlepage.netlify.app/cv/editor/about",
-    image: "/public/projects/cv-builder-capture.png",
+    image: "/src/assets/projects/cv-builder-capture.png",
     challenges: [
       "Synchronisation en temps réel sans latence via NgRx",
       "Mise en page dynamique complexe supportant plusieurs modèles",
@@ -217,7 +217,7 @@ export const projects = [
     link: "#",
     githubUrl: "https://github.com/votreuser/desevnet",
     liveUrl: "https://netgenerator.netlify.app/",
-    image: "/public/projects/desev-net.png",
+    image: "/src/assets/projects/desev-net.png",
     challenges: [
       "Rendu fluide de milliers de nœuds et liens avec D3.js",
       "Bridge de données haute performance",
