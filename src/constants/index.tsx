@@ -64,7 +64,7 @@ export const projects = [
     tags: ["FastAPI", "Vue.js", "PostgreSQL", "Docker", "Jira"],
     link: "#",
     githubUrl: "https://github.com/T-lamo/mla-planning",
-    liveUrl: "https://mla-planning.render.com",
+    liveUrl: "https://icctoulouseplanner.netlify.app/",
     image: mlaMain,
     challenges: [
       "Conception d'une architecture scalable",
