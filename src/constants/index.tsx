@@ -9,6 +9,8 @@ import digiMain from "../assets/projects/digi-swagger.png";
 import digiWorkflow from "../assets/projects/digi-workflow.png";
 import mlaMain from "../assets/projects/mla-api-example.png";
 import mlaJira from "../assets/projects/mla-jira-board.png";
+import mlaPlanningDetails from "../assets/projects/mla-planning-details.png";
+import mlaPlanning from "../assets/projects/mla-planning.png";
 import mlaSchema from "../assets/projects/mla-schema-db.png";
 import portFolioMain from "../assets/projects/port_folio.png";
 import portJira from "../assets/projects/port_jira.png";
@@ -65,7 +67,7 @@ export const projects = [
     link: "#",
     githubUrl: "https://github.com/T-lamo/mla-planning",
     liveUrl: "https://icctoulouseplanner.netlify.app/",
-    image: mlaMain,
+    image: mlaPlanning,
     challenges: [
       "Conception d'une architecture scalable",
       "Développement d'un 'Moteur de Collision Temporelle'",
@@ -73,6 +75,8 @@ export const projects = [
     ],
     results: "Système robuste garantissant 100 % de fiabilité.",
     detailedScreenshots: [
+      { url: mlaPlanning, caption: "Page de planning." },
+      { url: mlaPlanningDetails, caption: "Détails d'un planning." },
       { url: mlaMain, caption: "Exemple de réponse d'API REST." },
       { url: mlaJira, caption: "Scrums organisés via Jira." },
       { url: mlaSchema, caption: "Architecture de données SQL." },
