@@ -77,7 +77,7 @@ export const projects = [
       "Jira",
     ],
     link: "#",
-    githubUrl: "https://github.com/T-lamo/mla-planning",
+    githubUrl: "https://github.com/T-lamo/MLA-Planner",
     liveUrl: "https://icctoulouseplanner.netlify.app/",
     image: mlaCalendarWeek,
 
@@ -234,7 +234,7 @@ export const projects = [
       "Développement de mon portfolio personnel utilisant une architecture moderne et optimisée.",
     tags: ["React", "TypeScript", "Three.js", "Tailwind CSS", "Framer Motion", "Vite"],
     link: "#",
-    githubUrl: "https://github.com/T-lamo/portfolio",
+    githubUrl: "https://github.com/T-lamo/PORTEFOLIO",
     liveUrl: "https://amosdorceus.netlify.app",
     image: portFolioMain,
     challenges: [
