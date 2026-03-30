@@ -322,15 +322,16 @@ export const experiences = [
   {
     company: "Diginamic",
     role: "Data Engineer & IA",
-    period: "Déc 2025 – Présent",
+    period: "Déc 2025 – Mars 2026",
     icon: "education",
-    description: "Conception d'architectures de données et systèmes d'IA industrialisés.",
+    description: "Formation Data Engineering & IA suivie de décembre 2025 à mars 2026.",
     keyTasks: [
-      "Développement de pipelines Big Data complexes",
-      "Déploiement de modèles Machine Learning & NLP",
-      "Industrialisation via Docker et CI/CD",
+      "Conception d'applications avec UML et développement Python",
+      "Qualité applicative : tests SquashTM, CI/CD, Docker, tests automatisés",
+      "Méthodologie Agile : Scrum, Jira, Confluence, product management",
+      "Veille technologique et leadership / gestion de conflits",
     ],
-    stack: ["Python", "FastAPI", "Spark", "TensorFlow", "Docker", "Kafka"],
+    stack: ["Python", "UML", "Docker", "CI/CD", "SquashTM", "Jira", "Scrum"],
   },
   {
     company: "Anakeen",
