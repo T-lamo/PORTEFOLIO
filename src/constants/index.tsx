@@ -45,7 +45,7 @@ export const heroTexts = {
   role: "Ingénieur Logiciel Fullstack",
   subtitle: "Expertise Vue.js, Angular, TypeScript & FastAPI",
   description:
-    "Ingénieur avec 2 ans d'expérience au sein d'environnements industriels exigeants (Airbus, Anakeen). Je me spécialise dans la conception d'architectures web scalables et d'interfaces fluides. Passionné par l'innovation technique, j'allie rigueur professionnelle et créativité à travers des projets ambitieux. Disponible pour des missions de projet ou un CDI.",
+    "Ingénieur avec 3 ans d'expérience au sein d'environnements industriels exigeants (Airbus, Anakeen). Je me spécialise dans la conception d'architectures web scalables et d'interfaces fluides. Passionné par l'innovation technique, j'allie rigueur professionnelle et créativité à travers des projets ambitieux. Disponible pour des missions de projet ou un CDI.",
   ctaPrimary: "Voir mes projets",
   ctaSecondary: "Me contacter",
   Tel: "+330749286021",
