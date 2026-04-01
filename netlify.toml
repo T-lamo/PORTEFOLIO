@@ -15,12 +15,17 @@
   status = 200
 
 [[headers]]
-  # Optimisation des performances et sécurité
+  # Sécurité + pas de cache sur index.html (sinon le navigateur ne recharge jamais l'app)
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # Cache agressif pour les assets immuables de Vite
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  # Cache agressif uniquement pour les assets Vite (noms hachés → immuables)
+  for = "/assets/*"
+  [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
