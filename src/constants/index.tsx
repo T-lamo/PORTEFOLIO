@@ -54,7 +54,7 @@ export const heroTexts = {
 
 export const projects = [
   {
-    title: "MLA Planning — SaaS de planification (2026)",
+    title: "MLA Planning — SaaS de planification",
     description:
       "Plateforme SaaS multi-tenant pour la gestion des ressources humaines du Ministère de la Louange (ICC). Affectation des chantres, planning 24h/24, gestion des rôles et des absences.",
     longDescription:
@@ -228,7 +228,7 @@ export const projects = [
     ],
   },
   {
-    title: "Portfolio Professionnel - 2026",
+    title: "Portfolio Professionnel",
     description: "Vitrine technologique interactive conçue pour mettre en avant mes compétences.",
     longDescription:
       "Développement de mon portfolio personnel utilisant une architecture moderne et optimisée.",
@@ -249,7 +249,7 @@ export const projects = [
     ],
   },
   {
-    title: "Digicheese - Refonte SI Fidélité - Janvier 2026",
+    title: "Digicheese - Refonte SI Fidélité",
     description: "Modernisation d'un système legacy Access/VBA vers API REST Python sécurisée.",
     longDescription:
       "Projet critique de transformation numérique visant à remplacer un système obsolète.",
@@ -271,7 +271,7 @@ export const projects = [
     ],
   },
   {
-    title: "E-Commerce Decathlon 2023",
+    title: "E-Commerce Decathlon",
     description: "Application type Decathlon avec gestion de catalogue dynamique.",
     longDescription:
       "Plateforme e-commerce robuste conçue pour gérer des milliers de références produits.",
@@ -289,7 +289,7 @@ export const projects = [
     ],
   },
   {
-    title: "CV Builder Dynamique - 2024",
+    title: "CV Builder Dynamique",
     description: "Outil de création de CV avec prévisualisation temps réel (NgRx).",
     longDescription:
       "Un éditeur WYSIWYG permettant aux utilisateurs de construire des CV professionnels.",
