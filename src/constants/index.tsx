@@ -78,7 +78,7 @@ export const projects = [
     ],
     link: "#",
     githubUrl: "https://github.com/T-lamo/MLA-Planner",
-    liveUrl: "https://icctoulouseplanner.netlify.app/",
+    liveUrl: "https://plannerchurch.com/",
     image: mlaCalendarWeek,
 
     challenges: [
