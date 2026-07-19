@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" font-family="'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace">
+  <defs>
+    <filter id="tshadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="28" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <radialGradient id="rbg" cx="50%" cy="40%" r="90%">
+      <stop offset="0%" stop-color="#241511"/>
+      <stop offset="100%" stop-color="#120a07"/>
+    </radialGradient>
+    <radialGradient id="stoneO" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#f0763f"/>
+      <stop offset="100%" stop-color="#b93a13"/>
+    </radialGradient>
+    <radialGradient id="stoneC" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#fdf6e3"/>
+      <stop offset="100%" stop-color="#cbb896"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#rbg)"/>
+
+  <!-- Fenêtre terminal -->
+  <g filter="url(#tshadow)">
+    <rect x="150" y="60" width="900" height="640" rx="18" fill="#191210"/>
+  </g>
+  <rect x="150" y="60" width="900" height="46" rx="18" fill="#241a15"/>
+  <rect x="150" y="88" width="900" height="18" fill="#241a15"/>
+  <circle cx="184" cy="83" r="7.5" fill="#ff5f57"/>
+  <circle cx="210" cy="83" r="7.5" fill="#febc2e"/>
+  <circle cx="236" cy="83" r="7.5" fill="#28c840"/>
+
+  <!-- Prompt -->
+  <text x="190" y="150" font-size="19"><tspan fill="#4ade80">➜</tspan><tspan fill="#e8dcc8" dx="14">cargo run</tspan></text>
+
+  <!-- Plateau : cadre terminal -->
+  <g stroke="#4a3527" stroke-width="2">
+    <rect x="330" y="185" width="440" height="440" fill="#1e1512" rx="4"/>
+    <path d="M330 240 H770 M330 295 H770 M330 350 H770 M330 405 H770 M330 460 H770 M330 515 H770 M330 570 H770"/>
+    <path d="M385 185 V625 M440 185 V625 M495 185 V625 M550 185 V625 M605 185 V625 M660 185 V625 M715 185 V625"/>
+  </g>
+
+  <!-- Pierres crème (adversaire) : 12 pions, blocages aux deux bouts de la diagonale -->
+  <g>
+    <circle cx="357.5" cy="597.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="412.5" cy="487.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="467.5" cy="432.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="522.5" cy="377.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="577.5" cy="322.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="632.5" cy="267.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="357.5" cy="487.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="522.5" cy="487.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="632.5" cy="432.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="467.5" cy="322.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="687.5" cy="322.5" r="20" fill="url(#stoneC)"/>
+    <circle cx="687.5" cy="542.5" r="20" fill="url(#stoneC)"/>
+  </g>
+
+  <!-- Pierres orange hors diagonale : 8 pions -->
+  <g>
+    <circle cx="467.5" cy="542.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="522.5" cy="542.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="577.5" cy="487.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="467.5" cy="377.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="632.5" cy="487.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="412.5" cy="322.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="687.5" cy="432.5" r="20" fill="url(#stoneO)"/>
+    <circle cx="577.5" cy="267.5" r="20" fill="url(#stoneO)"/>
+  </g>
+
+  <!-- Diagonale gagnante orange rust : 5 pions -->
+  <line x1="412.5" y1="542.5" x2="632.5" y2="322.5" stroke="#f0763f" stroke-width="7" stroke-linecap="round" opacity="0.35"/>
+  <g>
+    <circle cx="412.5" cy="542.5" r="21" fill="url(#stoneO)"/>
+    <circle cx="467.5" cy="487.5" r="21" fill="url(#stoneO)"/>
+    <circle cx="522.5" cy="432.5" r="21" fill="url(#stoneO)"/>
+    <circle cx="577.5" cy="377.5" r="21" fill="url(#stoneO)"/>
+    <circle cx="632.5" cy="322.5" r="21" fill="url(#stoneO)" stroke="#ffd9a0" stroke-width="3"/>
+  </g>
+
+  <!-- Curseur de saisie -->
+  <text x="330" y="672" font-size="19"><tspan fill="#f0763f">&gt;</tspan><tspan fill="#e8dcc8" dx="12">e4</tspan></text>
+  <rect x="415" y="656" width="11" height="21" fill="#e8dcc8" opacity="0.85"/>
+
+  <!-- Score : 5 points oranges alignés en haut à droite du terminal -->
+  <g transform="translate(830,150)">
+    <circle cx="0" cy="0" r="9" fill="url(#stoneO)"/>
+    <circle cx="26" cy="0" r="9" fill="url(#stoneO)"/>
+    <circle cx="52" cy="0" r="9" fill="url(#stoneO)"/>
+    <circle cx="78" cy="0" r="9" fill="url(#stoneO)"/>
+    <circle cx="104" cy="0" r="9" fill="url(#stoneO)"/>
+    <path d="M130 2 L136 9 L150 -8" fill="none" stroke="#4ade80" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Engrenage Rust discret hors fenêtre -->
+  <g transform="translate(1085,655)" opacity="0.5">
+    <circle r="34" fill="none" stroke="#b93a13" stroke-width="9" stroke-dasharray="11 7"/>
+    <circle r="13" fill="#b93a13"/>
+  </g>
+</svg>

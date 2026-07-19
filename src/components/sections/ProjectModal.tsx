@@ -51,22 +51,26 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             {project.title}
           </motion.h3>
           <div className="flex items-center gap-4">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-primary p-2 text-white/50 transition-colors"
-            >
-              <Github size={22} />
-            </a>
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-primary p-2 text-white/50 transition-colors"
-            >
-              <ExternalLink size={22} />
-            </a>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-primary p-2 text-white/50 transition-colors"
+              >
+                <Github size={22} />
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-primary p-2 text-white/50 transition-colors"
+              >
+                <ExternalLink size={22} />
+              </a>
+            )}
             <button
               onClick={onClose}
               className="hover:bg-primary ml-4 rounded-full bg-white/10 p-2 text-white transition-all"

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" font-family="ui-sans-serif, system-ui, 'Segoe UI', sans-serif">
+  <defs>
+    <filter id="mshadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#000814" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Fond carte nuit -->
+  <rect width="1200" height="750" fill="#0d1b2a"/>
+
+  <!-- Parc -->
+  <path d="M0 0 L280 0 L180 190 L0 240 Z" fill="#12331f" opacity="0.55"/>
+  <!-- Rivière -->
+  <path d="M1200 90 C 1050 160, 1010 300, 1060 460 C 1090 560, 1040 680, 940 750 L 1200 750 Z" fill="#132c47" opacity="0.8"/>
+
+  <!-- Îlots / pâtés de maisons -->
+  <g fill="#152438">
+    <rect x="90" y="300" width="150" height="110" rx="8"/>
+    <rect x="90" y="450" width="150" height="130" rx="8"/>
+    <rect x="290" y="120" width="170" height="130" rx="8"/>
+    <rect x="290" y="300" width="170" height="110" rx="8"/>
+    <rect x="290" y="450" width="170" height="130" rx="8"/>
+    <rect x="510" y="120" width="150" height="130" rx="8"/>
+    <rect x="510" y="300" width="150" height="110" rx="8"/>
+    <rect x="510" y="450" width="150" height="130" rx="8"/>
+    <rect x="710" y="120" width="160" height="130" rx="8"/>
+    <rect x="710" y="300" width="160" height="110" rx="8"/>
+    <rect x="710" y="450" width="160" height="130" rx="8"/>
+    <rect x="90" y="120" width="150" height="130" rx="8"/>
+    <rect x="290" y="630" width="170" height="120" rx="8"/>
+    <rect x="510" y="630" width="150" height="120" rx="8"/>
+    <rect x="90" y="630" width="150" height="120" rx="8"/>
+    <rect x="710" y="630" width="160" height="120" rx="8"/>
+    <rect x="920" y="120" width="90" height="130" rx="8"/>
+    <rect x="920" y="300" width="110" height="110" rx="8"/>
+    <rect x="920" y="450" width="90" height="130" rx="8"/>
+  </g>
+
+  <!-- Grandes avenues -->
+  <g stroke="#1f3b5c" stroke-width="10" stroke-linecap="round">
+    <line x1="0" y1="278" x2="1200" y2="278"/>
+    <line x1="0" y1="430" x2="1030" y2="430"/>
+    <line x1="265" y1="0" x2="265" y2="750"/>
+    <line x1="685" y1="0" x2="685" y2="750"/>
+  </g>
+  <!-- Rues secondaires -->
+  <g stroke="#182c46" stroke-width="6" stroke-linecap="round">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="605" x2="920" y2="605"/>
+    <line x1="480" y1="0" x2="480" y2="750"/>
+    <line x1="895" y1="0" x2="895" y2="605"/>
+    <line x1="60" y1="0" x2="60" y2="750"/>
+  </g>
+  <!-- Pointillés centraux des avenues -->
+  <g stroke="#2c4d73" stroke-width="2" stroke-dasharray="14 12">
+    <line x1="0" y1="278" x2="1200" y2="278"/>
+    <line x1="265" y1="0" x2="265" y2="750"/>
+    <line x1="685" y1="0" x2="685" y2="750"/>
+  </g>
+
+  <!-- Itinéraire de tournée -->
+  <path d="M162 668 L162 605 L265 605 L265 430 L480 430 L480 278 L685 278 L685 190 L790 190"
+        fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+  <path d="M162 668 L162 605 L265 605 L265 430 L480 430 L480 278 L685 278 L685 190 L790 190"
+        fill="none" stroke="#ffd60a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Puck position (départ) -->
+  <g transform="translate(162,668)">
+    <circle r="26" fill="#3b82f6" opacity="0.25"/>
+    <circle r="11" fill="#3b82f6" stroke="#ffffff" stroke-width="3.5"/>
+  </g>
+
+  <!-- Étapes numérotées -->
+  <g filter="url(#mshadow)">
+    <g transform="translate(265,510)">
+      <circle r="17" fill="#ffffff"/>
+      <text y="6.5" fill="#0d1b2a" font-size="18" font-weight="800" text-anchor="middle">1</text>
+    </g>
+    <g transform="translate(480,352)">
+      <circle r="17" fill="#ffffff"/>
+      <text y="6.5" fill="#0d1b2a" font-size="18" font-weight="800" text-anchor="middle">2</text>
+    </g>
+    <g transform="translate(685,238)">
+      <circle r="17" fill="#ffffff"/>
+      <text y="6.5" fill="#0d1b2a" font-size="18" font-weight="800" text-anchor="middle">3</text>
+    </g>
+  </g>
+
+  <!-- Pin destination -->
+  <g transform="translate(790,190)" filter="url(#mshadow)">
+    <path d="M0 0 C -30 -40, -30 -72, 0 -72 C 30 -72, 30 -40, 0 0 Z" fill="#ffd60a"/>
+    <circle cx="0" cy="-46" r="14" fill="#0d1b2a"/>
+  </g>
+
+  <!-- Chip ETA -->
+  <g transform="translate(892,84)" filter="url(#mshadow)">
+    <rect x="0" y="0" width="228" height="64" rx="32" fill="#16283e"/>
+    <circle cx="34" cy="32" r="15" fill="none" stroke="#ffd60a" stroke-width="4"/>
+    <path d="M34 24 V32 L40 37" fill="none" stroke="#ffd60a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="62" y="41" fill="#ffffff" font-size="23" font-weight="700">26 min<tspan fill="#7d93ad" font-size="17" font-weight="500" dx="10">12,4 km</tspan></text>
+  </g>
+
+  <!-- Marqueurs clients hors tournée -->
+  <g opacity="0.75">
+    <g transform="translate(940,540)">
+      <path d="M0 0 C -13 -18, -13 -32, 0 -32 C 13 -32, 13 -18, 0 0 Z" fill="#4a6b8f"/>
+      <circle cx="0" cy="-21" r="5.5" fill="#0d1b2a"/>
+    </g>
+    <g transform="translate(370,168)">
+      <path d="M0 0 C -13 -18, -13 -32, 0 -32 C 13 -32, 13 -18, 0 0 Z" fill="#4a6b8f"/>
+      <circle cx="0" cy="-21" r="5.5" fill="#0d1b2a"/>
+    </g>
+  </g>
+
+  <!-- Boutons zoom -->
+  <g filter="url(#mshadow)">
+    <rect x="44" y="44" width="46" height="92" rx="12" fill="#16283e"/>
+    <path d="M58 74 h18 M67 65 v18" stroke="#dbe6f1" stroke-width="3" stroke-linecap="round"/>
+    <path d="M58 110 h18" stroke="#dbe6f1" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
