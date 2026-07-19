@@ -1,4 +1,5 @@
 // 1. IMPORT DES ASSETS (Indispensable pour Vite & Netlify)
+
 import cvBuilderMain from "../assets/projects/cv-builder-capture.png";
 import decatCommande from "../assets/projects/decat-commande.png";
 import decatDetails from "../assets/projects/decat-details.png";
@@ -7,6 +8,13 @@ import desevNetMain from "../assets/projects/desev-net.png";
 import digiJira from "../assets/projects/digi-jira-board.png";
 import digiMain from "../assets/projects/digi-swagger.png";
 import digiWorkflow from "../assets/projects/digi-workflow.png";
+import genAppDistribuee from "../assets/projects/gen-app-distribuee.svg";
+import genCeriGame from "../assets/projects/gen-ceri-game.svg";
+import genEcommerceCeri from "../assets/projects/gen-ecommerce-ceri.svg";
+import genFiveInRow from "../assets/projects/gen-five-in-row.svg";
+import genHackTrash from "../assets/projects/gen-hacktrash.svg";
+import genN8nAutomation from "../assets/projects/gen-n8n-automation.svg";
+import genRapidDelivery from "../assets/projects/gen-rapid-delivery.svg";
 import mlaJira from "../assets/projects/mla-jira-board.png";
 import mlaPlanningDetails from "../assets/projects/mla-planning-details.png";
 import mlaSchema from "../assets/projects/mla-schema-db.png";
@@ -32,6 +40,7 @@ import mlaTests from "../assets/projects/mlaTests.png";
 import portFolioMain from "../assets/projects/port_folio.png";
 import portJira from "../assets/projects/port_jira.png";
 import portUserStory from "../assets/projects/port_user_story.png";
+import type { Project, ProjectCategoryInfo } from "../types";
 
 export const navLinks = [
   { id: "about", title: "À propos" },
@@ -52,9 +61,17 @@ export const heroTexts = {
   Email: "amosdorceus2010@gmail.com",
 };
 
-export const projects = [
+export const projectCategories: ProjectCategoryInfo[] = [
+  { id: "fullstack", label: "Web Fullstack & SaaS" },
+  { id: "frontend", label: "Frontend & UI" },
+  { id: "automation", label: "Automatisation" },
+  { id: "systems", label: "Systèmes & Algorithmes" },
+];
+
+export const projects: Project[] = [
   {
     title: "MLA Planning — SaaS de planification",
+    category: "fullstack",
     description:
       "Plateforme SaaS multi-tenant pour la gestion des ressources humaines du Ministère de la Louange (ICC). Affectation des chantres, planning 24h/24, gestion des rôles et des absences.",
     longDescription:
@@ -228,7 +245,40 @@ export const projects = [
     ],
   },
   {
+    title: "Automatisation recherche d'emploi — n8n",
+    category: "automation",
+    description:
+      "Pipeline d'automatisation complet du suivi de candidatures : Trello, n8n, Google APIs, Telegram et une extension Chrome maison.",
+    longDescription:
+      "Système d'automatisation personnel construit autour de n8n (auto-hébergé dans Docker). Une extension Chrome (Manifest V3) capture en un clic les offres LinkedIn / HelloWork et crée une carte Trello structurée. Les mouvements de cartes déclenchent des webhooks (exposés via ngrok) traités par deux workflows n8n : le premier programme une relance automatique à J+7 (rappel Google Calendar + brouillon Gmail personnalisé), le second journalise chaque étape dans Google Sheets et envoie un bilan hebdomadaire sur Telegram chaque vendredi.",
+    tags: [
+      "n8n",
+      "Docker",
+      "Trello API",
+      "Webhooks",
+      "OAuth2",
+      "Google APIs",
+      "Extension Chrome",
+      "JavaScript",
+      "ngrok",
+      "Telegram Bot",
+    ],
+    link: "#",
+    image: genN8nAutomation,
+    challenges: [
+      "Orchestration de 5 services externes (Trello, Gmail, Calendar, Sheets, Telegram) via OAuth2 et credentials chiffrés dans n8n",
+      "Exposition sécurisée d'une instance locale via tunnel ngrok avec ré-enregistrement des webhooks Trello à chaque changement d'URL",
+      "Extension Chrome Manifest V3 : scraping robuste des pages LinkedIn / HelloWork et création de cartes Trello via API",
+      "Idempotence des relances : étiquette « Relancé » posée sur la carte pour éviter les doublons de rappels",
+      "Configuration par variables d'environnement (TRELLO_BOARD_ID) pour un workflow portable sans valeurs codées en dur",
+    ],
+    results:
+      "Zéro suivi manuel : chaque candidature déplacée dans « Postulé » génère automatiquement son rappel J+7 et son brouillon de relance ; un bilan chiffré (candidatures, entretiens, taux de réponse) arrive chaque vendredi sur Telegram.",
+    detailedScreenshots: [],
+  },
+  {
     title: "Portfolio Professionnel",
+    category: "frontend",
     description: "Vitrine technologique interactive conçue pour mettre en avant mes compétences.",
     longDescription:
       "Développement de mon portfolio personnel utilisant une architecture moderne et optimisée.",
@@ -250,6 +300,7 @@ export const projects = [
   },
   {
     title: "Digicheese - Refonte SI Fidélité",
+    category: "fullstack",
     description: "Modernisation d'un système legacy Access/VBA vers API REST Python sécurisée.",
     longDescription:
       "Projet critique de transformation numérique visant à remplacer un système obsolète.",
@@ -272,6 +323,7 @@ export const projects = [
   },
   {
     title: "E-Commerce Decathlon",
+    category: "frontend",
     description: "Application type Decathlon avec gestion de catalogue dynamique.",
     longDescription:
       "Plateforme e-commerce robuste conçue pour gérer des milliers de références produits.",
@@ -290,6 +342,7 @@ export const projects = [
   },
   {
     title: "CV Builder Dynamique",
+    category: "frontend",
     description: "Outil de création de CV avec prévisualisation temps réel (NgRx).",
     longDescription:
       "Un éditeur WYSIWYG permettant aux utilisateurs de construire des CV professionnels.",
@@ -304,6 +357,7 @@ export const projects = [
   },
   {
     title: "Desevnet Graph Editor",
+    category: "frontend",
     description: "Éditeur de graphes interactif pour la simulation de réseaux électriques.",
     longDescription:
       "Outil technique destiné aux ingénieurs réseau pour modéliser des Smart Grids.",
@@ -314,6 +368,138 @@ export const projects = [
     image: desevNetMain,
     challenges: ["Rendu D3.js fluide", "Algorithmes de topologie réseau"],
     results: "Réduction du temps de configuration de 80 %.",
+    detailedScreenshots: [],
+  },
+  {
+    title: "Rapid Delivery — Optimisation de tournées",
+    category: "systems",
+    description:
+      "Application de routage de livraisons : carte interactive, clients géolocalisés et calcul d'itinéraires réels via OSRM.",
+    longDescription:
+      "Outil de planification de tournées de livraison développé en Vue 3 / TypeScript. Les clients sont positionnés sur une carte Leaflet, et le moteur open source OSRM fournit les itinéraires routiers réels (polylines, étapes) ainsi que les matrices distances/durées entre tous les points, base du choix de la tournée la plus efficace depuis le dépôt.",
+    tags: ["Vue 3", "TypeScript", "Leaflet", "OSRM", "Vuetify", "Pinia", "Axios", "Vite"],
+    link: "#",
+    image: genRapidDelivery,
+    challenges: [
+      "Intégration de l'API OSRM : endpoints /route et /table pour obtenir trajets détaillés et matrices distance/durée N×N",
+      "Appels réseau séquencés pour respecter les limites du serveur public de routage",
+      "Modélisation du réseau de livraison en graphe (nœuds, arcs) synchronisé avec la carte Leaflet",
+      "Architecture par stores Pinia séparés : clients, réseau routier, visualisation",
+    ],
+    results:
+      "Visualisation immédiate de la tournée optimale entre dépôt et clients avec distances et durées réelles issues du réseau routier.",
+    detailedScreenshots: [],
+  },
+  {
+    title: "E-Commerce Cloud-Native — Master CERI",
+    category: "fullstack",
+    description:
+      "Boutique en ligne complète déployée sur Google Cloud : FastAPI, Vue.js, Cloud SQL, Algolia et infrastructure Terraform.",
+    longDescription:
+      "Projet e-commerce de Master 1 mené en équipe (rôles : Backend Engineer et Site Reliability Engineer). Le backend FastAPI expose l'API produits / commandes / utilisateurs sur une base MySQL managée (Cloud SQL, accédée via cloud-sql-proxy), la recherche instantanée est déléguée à Algolia, et l'ensemble (frontend Vue.js, backend, reverse proxy) est conteneurisé avec des environnements docker-compose dev et prod. Le provisioning GCP est décrit en Terraform.",
+    tags: [
+      "FastAPI",
+      "Python",
+      "Vue.js",
+      "MySQL",
+      "GCP",
+      "Cloud SQL",
+      "Terraform",
+      "Docker",
+      "Algolia",
+      "Nginx",
+    ],
+    link: "#",
+    image: genEcommerceCeri,
+    challenges: [
+      "Double casquette Backend + SRE : conception de l'API et responsabilité du déploiement cloud de bout en bout",
+      "Connexion sécurisée à Cloud SQL via cloud-sql-proxy en local comme en production",
+      "Infrastructure as Code : provisioning GCP reproductible décrit en Terraform",
+      "Parité dev/prod grâce à deux stacks docker-compose distinctes derrière un reverse proxy Nginx",
+      "Indexation du catalogue dans Algolia pour une recherche instantanée côté client",
+    ],
+    results:
+      "Plateforme e-commerce fonctionnelle déployée sur GCP avec recherche instantanée, base managée et environnements reproductibles — projet académique mené comme un produit réel.",
+    detailedScreenshots: [],
+  },
+  {
+    title: "Puissance 5 (Gomoku) — Rust",
+    category: "systems",
+    description:
+      "Jeu de plateau en ligne de commande écrit en Rust : détection d'alignements, manches, scores et rendu coloré en terminal.",
+    longDescription:
+      "Implémentation complète du jeu Puissance 5 (Gomoku) en Rust, jouable à deux dans le terminal. Le projet est découpé en modules dédiés (plateau, partie, joueurs, énumérations d'état, utilitaires) et exploite les forces du langage : ownership, pattern matching exhaustif sur les états de jeu et types algébriques pour un code sans états invalides.",
+    tags: ["Rust", "Cargo", "CLI", "Pattern Matching"],
+    link: "#",
+    image: genFiveInRow,
+    challenges: [
+      "Algorithme de détection des alignements de 5 pions dans toutes les directions (lignes, colonnes, deux diagonales)",
+      "Modélisation des états de jeu avec des enums Rust et un pattern matching exhaustif vérifié à la compilation",
+      "Gestion des manches successives et du score sur un cycle de parties complet",
+      "Rendu du plateau lisible et coloré en terminal avec la crate colored",
+    ],
+    results:
+      "Jeu robuste et sans crash possible sur états invalides — un terrain d'apprentissage concret de l'ownership et du système de types de Rust.",
+    detailedScreenshots: [],
+  },
+  {
+    title: "Streaming musical distribué piloté à la voix",
+    category: "systems",
+    description:
+      "Système distribué de streaming musical commandé à la voix depuis Android, bâti sur le middleware ZeroC Ice.",
+    longDescription:
+      "Projet de systèmes distribués (Master) : une application Android enregistre la voix de l'utilisateur (« joue Hotel California »), la transmet par objets distants Ice à un service NLP qui interprète l'intention, puis des serveurs de streaming Java répartis sur plusieurs machines diffusent la musique en flux HTTP continu grâce à VLCj. Le catalogue musical est géré en SQLite et exposé via les mêmes interfaces Ice.",
+    tags: ["Java", "Android", "ZeroC Ice", "Python", "Flask", "NLP", "VLCj", "SQLite"],
+    link: "#",
+    image: genAppDistribuee,
+    challenges: [
+      "Communication inter-langages (Java / Android / Python) par objets partagés via le middleware ZeroC Ice",
+      "Chaîne voix → texte → intention : transmission de l'audio capté sur mobile et interprétation NLP des commandes",
+      "Répartition des serveurs de streaming sur plusieurs machines avec registre Ice pour la découverte de services",
+      "Diffusion audio HTTP en continu vers le mobile pendant le contrôle distant de la lecture",
+    ],
+    results:
+      "Chaîne complète fonctionnelle : une commande vocale prononcée sur Android déclenche la lecture du bon titre, diffusé en streaming depuis un serveur distant.",
+    detailedScreenshots: [],
+  },
+  {
+    title: "CeriGame — Quiz interactif Angular",
+    category: "frontend",
+    description:
+      "Jeu de quiz en ligne développé avec Angular 11 : comptes joueurs, parties chronométrées et notifications.",
+    longDescription:
+      "Application de quiz développée à l'Université d'Avignon avec Angular 11. La SPA gère la connexion des joueurs, le déroulement des parties (questions à choix multiples chronométrées), l'édition du profil utilisateur et un bandeau de notifications. Les données (authentification, questions, scores) sont consommées depuis l'API REST pédagogique de l'université via HttpClient et RxJS.",
+    tags: ["Angular 11", "TypeScript", "RxJS", "SCSS", "API REST", "Karma"],
+    link: "#",
+    image: genCeriGame,
+    challenges: [
+      "Architecture en composants Angular : connexion, quiz, profil, notifications, routing dédié",
+      "Flux asynchrones RxJS (Observables) pour consommer l'API REST de l'université",
+      "Gestion de session joueur et modification du profil (pseudo, avatar, mot de passe)",
+      "Mise en place des tests unitaires avec Karma / Jasmine",
+    ],
+    results:
+      "Premier projet Angular complet : un quiz jouable de bout en bout, des fondations qui ont mené ensuite aux missions professionnelles Angular (Airbus, CV Builder).",
+    detailedScreenshots: [],
+  },
+  {
+    title: "HackTrash — ERP de recyclage plastique",
+    category: "fullstack",
+    description:
+      "Plateforme web de pilotage d'une usine de recyclage : collecte, chaîne de production, ventes, RH et prédictions ML.",
+    longDescription:
+      "ERP web développé en PHP/MySQL lors d'un hackathon pour piloter toute la chaîne d'une usine de recyclage plastique : collecte auprès des collecteurs (avec solde et géolocalisation), étapes de production (triage, lavage, compactage, extrusion, pelletisation), ventes aux clients B2B, gestion du personnel (présence, paie) et maintenance des machines (carburant, pièces, rapports). Un tableau de bord Chart.js agrège l'activité en temps réel, et des modèles de régression scikit-learn entraînés en Python prédisent les volumes de collecte et les ventes à venir.",
+    tags: ["PHP", "MySQL", "Chart.js", "Bootstrap", "Python", "scikit-learn", "Leaflet"],
+    link: "#",
+    image: genHackTrash,
+    challenges: [
+      "Modélisation complète du métier : 30+ écrans couvrant collecte, production, stock, ventes, RH et maintenance",
+      "Intégration de modèles ML scikit-learn (prédiction des collectes et des ventes) servis depuis une application PHP",
+      "Tableau de bord temps réel : indicateurs croisés stock / machines / carburant / présence avec Chart.js",
+      "Cartographie des clients et collecteurs pour organiser les tournées de collecte",
+    ],
+    results:
+      "Prototype d'ERP fonctionnel couvrant l'intégralité du cycle « déchet → granulé → vente », enrichi de prédictions ML pour anticiper collectes et revenus.",
     detailedScreenshots: [],
   },
 ];

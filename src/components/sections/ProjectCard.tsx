@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Github, ExternalLink, Linkedin } from "lucide-react";
 
 import type { Project } from "../../types";
-import { fadeIn } from "../../utils/motion";
 
 interface ProjectCardProps {
   project: Project & { linkedinUrl?: string };
@@ -14,7 +13,16 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
   return (
     <motion.div
-      variants={fadeIn("up", "spring", index * 0.3, 0.75)}
+      // Entrée au scroll (délai plafonné pour rester réactif lors des filtrages)
+      initial={{ opacity: 0, y: 40, scale: 0.96 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.4, ease: "easeOut", delay: Math.min(index * 0.08, 0.4) },
+      }}
+      viewport={{ once: true, margin: "-40px" }}
+      exit={{ opacity: 0, scale: 0.92, transition: { duration: 0.2, ease: "easeIn" } }}
       // La carte elle-même déclenche l'ouverture des détails (onClick)
       className="glass-card group hover:border-primary/30 relative flex cursor-pointer flex-col items-center overflow-hidden rounded-[2.5rem] border border-white/5 p-6 text-center transition-all duration-500"
       onClick={onClick}
@@ -33,16 +41,18 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
         {/* Overlay avec liens - On utilise cursor-default sur le fond pour ne pas confondre avec le bouton */}
         <div className="absolute inset-0 z-10 flex cursor-default items-center justify-center gap-3 bg-black/50 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100">
           {/* GitHub : cursor-pointer forcé */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(project.githubUrl, "_blank");
-            }}
-            className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all duration-300 hover:scale-110 hover:bg-white hover:text-black"
-            title="GitHub"
-          >
-            <Github size={20} />
-          </button>
+          {project.githubUrl && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(project.githubUrl, "_blank");
+              }}
+              className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all duration-300 hover:scale-110 hover:bg-white hover:text-black"
+              title="GitHub"
+            >
+              <Github size={20} />
+            </button>
+          )}
 
           {/* LinkedIn : cursor-pointer forcé */}
           {project.linkedinUrl && (
@@ -59,16 +69,18 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
           )}
 
           {/* Live Link : cursor-pointer forcé */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(project.liveUrl, "_blank");
-            }}
-            className="bg-primary shadow-primary/20 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110"
-            title="Voir le projet"
-          >
-            <ExternalLink size={24} />
-          </button>
+          {project.liveUrl && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(project.liveUrl, "_blank");
+              }}
+              className="bg-primary shadow-primary/20 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110"
+              title="Voir le projet"
+            >
+              <ExternalLink size={24} />
+            </button>
+          )}
         </div>
       </div>
 
