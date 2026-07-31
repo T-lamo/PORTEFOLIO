@@ -11,6 +11,7 @@ import digiWorkflow from "../assets/projects/digi-workflow.png";
 import genAppDistribuee from "../assets/projects/gen-app-distribuee.svg";
 import genCeriGame from "../assets/projects/gen-ceri-game.svg";
 import genEcommerceCeri from "../assets/projects/gen-ecommerce-ceri.svg";
+import genEkolplus from "../assets/projects/gen-ekolplus.svg";
 import genFiveInRow from "../assets/projects/gen-five-in-row.svg";
 import genHackTrash from "../assets/projects/gen-hacktrash.svg";
 import genN8nAutomation from "../assets/projects/gen-n8n-automation.svg";
@@ -95,7 +96,6 @@ export const projects: Project[] = [
     ],
     link: "#",
     githubUrl: "https://github.com/T-lamo/MLA-Planner",
-    liveUrl: "https://plannerchurch.com/",
     image: mlaCalendarWeek,
 
     challenges: [
@@ -243,6 +243,41 @@ export const projects: Project[] = [
         caption: "Gestion de projet Agile — sprints Jira, backlog priorisé, suivi des livraisons.",
       },
     ],
+  },
+  {
+    title: "EkolPlus — SaaS de gestion scolaire (Haïti)",
+    category: "fullstack",
+    description:
+      "SIS/ERP multi-tenant pour les écoles haïtiennes : présence, notes, bulletins PDF et facturation, avec isolation stricte des données par établissement.",
+    longDescription:
+      "SaaS de gestion scolaire conçu et développé en solo pour le marché haïtien, où les écoles gèrent encore élèves, présences et bulletins sur papier ou via des outils disparates. Le frontend est une app Next.js 15 (App Router, TypeScript, Tailwind CSS, shadcn/ui), le backend une API NestJS avec guards RBAC, et la donnée est portée par Supabase (PostgreSQL, Auth, Row Level Security). Chaque rôle — administrateur d'école, enseignant, parent, élève — a son propre tableau de bord, et l'isolation entre écoles est garantie par des policies RLS en base plutôt que par du code applicatif. L'application est déployée en conteneurs Docker sur un VPS, avec Supabase managé pour la donnée.",
+    tags: [
+      "Next.js 15",
+      "NestJS",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Row Level Security",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Docker",
+      "Stripe",
+      "RBAC",
+      "Multi-tenant",
+    ],
+    link: "#",
+    image: genEkolplus,
+    challenges: [
+      "Isolation multi-tenant portée par la base plutôt que par le code : policies RLS Postgres pilotées par profiles.tenant_id, vérifiées avec de vrais logins sur deux écoles de démonstration",
+      "Authentification globale sans slug d'école dans l'URL : le tenant est dérivé du JWT vérifié, jamais de l'adresse, pour éviter toute fuite d'information entre établissements",
+      "RBAC à quatre rôles (AdminÉcole, Enseignant, Parent, Élève) avec des tableaux de bord et des permissions distincts par profil",
+      "Génération de bulletins PDF côté serveur (NestJS + Chromium), incompatible avec un hébergement serverless — d'où le choix d'un déploiement conteneurisé sur VPS",
+      "Facturation des écoles par abonnement Stripe (checkout, portail client, webhooks et tâche planifiée de relance)",
+      "Provisioning des écoles réservé à un CLI interne exécuté côté serveur plutôt qu'à une interface web, pour ne jamais exposer de super-admin accessible depuis l'application",
+    ],
+    results:
+      "Application déployée et validée de bout en bout sur un VPS de production : isolation RLS testée avec de vraies données sur deux écoles, RBAC vérifié (un compte enseignant reçoit bien un 403 sur les routes réservées à l'administration), parcours de connexion validé avec un vrai navigateur (Playwright). Encore en phase de test avant ouverture à de vraies écoles.",
+    detailedScreenshots: [],
   },
   {
     title: "Automatisation recherche d'emploi — n8n",
