@@ -11,7 +11,6 @@ import digiWorkflow from "../assets/projects/digi-workflow.png";
 import genAppDistribuee from "../assets/projects/gen-app-distribuee.svg";
 import genCeriGame from "../assets/projects/gen-ceri-game.svg";
 import genEcommerceCeri from "../assets/projects/gen-ecommerce-ceri.svg";
-import genEkolplus from "../assets/projects/gen-ekolplus.svg";
 import genFiveInRow from "../assets/projects/gen-five-in-row.svg";
 import genHackTrash from "../assets/projects/gen-hacktrash.svg";
 import genN8nAutomation from "../assets/projects/gen-n8n-automation.svg";
@@ -41,6 +40,18 @@ import mlaTests from "../assets/projects/mlaTests.png";
 import portFolioMain from "../assets/projects/port_folio.png";
 import portJira from "../assets/projects/port_jira.png";
 import portUserStory from "../assets/projects/port_user_story.png";
+import sgBulletinPdf from "../assets/projects/sg-bulletin-pdf.png";
+import sgBulletinTemplates from "../assets/projects/sg-bulletin-templates.png";
+import sgCarnetNotes from "../assets/projects/sg-carnet-notes.png";
+import sgDashboard from "../assets/projects/sg-dashboard.png";
+import sgEspaceEleve from "../assets/projects/sg-espace-eleve.png";
+import sgEspaceEnseignant from "../assets/projects/sg-espace-enseignant.png";
+import sgFraisScolarite from "../assets/projects/sg-frais-scolarite.png";
+import sgLangues from "../assets/projects/sg-langues.png";
+import sgPermissionsRbac from "../assets/projects/sg-permissions-rbac.png";
+import sgProfilEleve from "../assets/projects/sg-profil-eleve.png";
+import sgThemesCouleur from "../assets/projects/sg-themes-couleur.png";
+import sgTimetable from "../assets/projects/sg-timetable.png";
 import type { Project, ProjectCategoryInfo } from "../types";
 
 export const navLinks = [
@@ -55,7 +66,7 @@ export const heroTexts = {
   role: "Ingénieur Logiciel Fullstack",
   subtitle: "Expertise Vue.js, Angular, TypeScript & FastAPI",
   description:
-    "Ingénieur avec 3 ans d'expérience au sein d'environnements industriels exigeants (Airbus, Anakeen). Je me spécialise dans la conception d'architectures web scalables et d'interfaces fluides. Passionné par l'innovation technique, j'allie rigueur professionnelle et créativité à travers des projets ambitieux. Disponible pour des missions de projet ou un CDI.",
+    "Ingénieur logiciel fullstack, 3 ans d'expérience dont deux missions en environnement industriel exigeant (Airbus, Anakeen). Je construis des applications web de bout en bout, du schéma de base de données à l'interface, avec une préférence pour les architectures simples à maintenir. En parallèle, je développe SchoolGesti, un SaaS de gestion scolaire pour des écoles en Haïti. Disponible pour une mission ou un CDI.",
   ctaPrimary: "Voir mes projets",
   ctaSecondary: "Me contacter",
   Tel: "+330749286021",
@@ -71,7 +82,7 @@ export const projectCategories: ProjectCategoryInfo[] = [
 
 export const projects: Project[] = [
   {
-    title: "MLA Planning — SaaS de planification",
+    title: "MLA Planning : SaaS de planification",
     category: "fullstack",
     description:
       "Plateforme SaaS multi-tenant pour la gestion des ressources humaines du Ministère de la Louange (ICC). Affectation des chantres, planning 24h/24, gestion des rôles et des absences.",
@@ -101,10 +112,10 @@ export const projects: Project[] = [
     challenges: [
       "Architecture multi-tenant : isolation stricte des données par campus avec filtres obligatoires sur chaque requête SQL",
       "Moteur de workflow d'affectation : machine à états (PROPOSE → CONFIRME → PRÉSENT / ABSENT / RETARD) avec transitions métier validées côté serveur",
-      "Sécurité JWT avancée : tokens signés HS256 avec JTI unique et blacklist en base — révocation immédiate à la déconnexion",
-      "RBAC à 4 niveaux : SuperAdmin, Admin, Responsable MLA, Membre MLA — chaque endpoint protégé via RoleChecker injectable (FastAPI Depends)",
+      "Sécurité JWT avancée : tokens signés HS256 avec JTI unique et blacklist en base, pour une révocation immédiate à la déconnexion",
+      "RBAC à 4 niveaux (SuperAdmin, Admin, Responsable MLA, Membre MLA), chaque endpoint protégé via RoleChecker injectable (FastAPI Depends)",
       "Calendrier 24h/24 multi-perspectives : vue Personnelle, Ministère ou Campus avec coloration déterministe par ministère",
-      "Pipeline CI/CD complet : isort → black → mypy (strict) → pylint 10/10 → flake8 → pytest (192 tests) — zéro tolérance aux erreurs",
+      "Pipeline CI/CD complet : isort → black → mypy (strict) → pylint 10/10 → flake8 → pytest (192 tests), zéro tolérance aux erreurs",
     ],
 
     results:
@@ -116,171 +127,237 @@ export const projects: Project[] = [
         // Page de login avec le formulaire centré et le logo
         url: mlaLogin,
         caption:
-          "Page de connexion — authentification JWT sécurisée (cookies HttpOnly, sameSite strict).",
+          "Page de connexion. Authentification JWT sécurisée avec cookies HttpOnly et sameSite strict.",
       },
       {
         // Sidebar dépliée avec toutes les sections visibles (Planning, Administration)
         url: mlaSidebar,
         caption:
-          "Navigation principale — sidebar responsive avec sections par rôle (Admin, Membre).",
+          "Navigation principale, sidebar responsive avec sections par rôle (Admin, Membre).",
       },
       {
         // Sidebar repliée en mode icônes avec le popup Planning au survol
         url: mlaSidebarCollapsed,
-        caption: "Mode compact — sidebar réduite aux icônes avec popup contextuel au survol.",
+        caption: "Mode compact : sidebar réduite aux icônes avec popup contextuel au survol.",
       },
 
       // ── CALENDRIER ──────────────────────────────────────────────────
       {
         // Vue calendrier mensuel avec créneaux colorés par ministère
         url: mlaCalendar,
-        caption: "Calendrier FullCalendar 24h/24 — vue mensuelle avec coloration par ministère.",
+        caption: "Calendrier FullCalendar 24h/24, vue mensuelle avec coloration par ministère.",
       },
       {
         // Vue calendrier en mode semaine avec créneaux détaillés
         url: mlaCalendarWeek,
-        caption: "Vue hebdomadaire — créneaux détaillés et taux de remplissage en temps réel.",
+        caption: "Vue hebdomadaire avec créneaux détaillés et taux de remplissage en temps réel.",
       },
 
       // ── GESTION DES PLANNINGS ───────────────────────────────────────
       {
         // Formulaire de création : section Activité avec le sélecteur de type
         url: mlaPlanningFormActivite,
-        caption: "Création de planning — sélection du type d'activité, dates et lieu.",
+        caption: "Création de planning : sélection du type d'activité, dates et lieu.",
       },
       {
         // Formulaire : section Créneaux avec l'heure début/fin et quota de personnes
         url: mlaPlanningFormSlots,
-        caption: "Configuration des créneaux — horaires, quota de membres requis par service.",
+        caption: "Configuration des créneaux : horaires et quota de membres requis par service.",
       },
       {
         // Formulaire : section Équipe avec picker de membres et rôles affectés
         url: mlaPlanningFormEquipe,
         caption:
-          "Affectation de l'équipe — sélection des membres par ministère et attribution des rôles.",
+          "Affectation de l'équipe, sélection des membres par ministère et attribution des rôles.",
       },
       {
         // Drawer de détail d'un planning publié avec les statuts de présence
         url: mlaPlanningDetails,
-        caption: "Détail d'un planning publié — statuts de présence (Présent / Absent / Retard).",
+        caption:
+          "Détail d'un planning publié, avec les statuts de présence (Présent, Absent, Retard).",
       },
       {
         // Boutons de transition workflow dans le drawer (Publier, Terminer, Annuler)
         url: mlaPlanningWorkflow,
-        caption: "Moteur de workflow — transitions d'état validées côté serveur (machine à états).",
+        caption: "Moteur de workflow : transitions d'état validées côté serveur (machine à états).",
       },
 
       // ── AFFECTATIONS MEMBRE ─────────────────────────────────────────
       {
         // Page mes-affectations avec section "En attente" et boutons Accepter/Refuser
         url: mlaMesAffectations,
-        caption: "Mes affectations — acceptation ou refus des propositions en temps réel.",
+        caption: "Mes affectations, avec acceptation ou refus des propositions en temps réel.",
       },
 
       // ── GESTION DES PROFILS ─────────────────────────────────────────
       {
         // Page profils admin avec grille de cards membres
         url: mlaProfiles,
-        caption: "Gestion des membres — vue admin avec recherche et filtrage par campus.",
+        caption: "Gestion des membres : vue admin avec recherche et filtrage par campus.",
       },
       {
         // Drawer profil ouvert sur la section Informations personnelles
         url: mlaProfileDrawerInfo,
-        caption: "Fiche membre — édition des informations personnelles et statut actif/inactif.",
+        caption:
+          "Fiche membre : édition des informations personnelles et du statut actif ou inactif.",
       },
       {
         // Drawer profil section Ministères & Pôles avec cases à cocher
         url: mlaProfileDrawerMinisteres,
-        caption: "Affectation ministères — rattachement aux pôles et ministères de l'organisation.",
+        caption:
+          "Affectation aux ministères : rattachement aux pôles et ministères de l'organisation.",
       },
       {
         // Drawer profil section Accès applicatif (username, mot de passe, rôles)
         url: mlaProfileDrawerAcces,
         caption:
-          "Accès applicatif — création du compte utilisateur avec RBAC depuis le même formulaire.",
+          "Accès applicatif : création du compte utilisateur avec RBAC depuis le même formulaire.",
       },
       {
         // Page super admin profiles avec dropdown campus et liste complète
         url: mlaSuperProfiles,
-        caption: "Vue SuperAdmin — accès global à tous les campus, gestion cross-tenant.",
+        caption: "Vue SuperAdmin, avec accès global à tous les campus et gestion cross-tenant.",
       },
 
       // ── INDISPONIBILITÉS ────────────────────────────────────────────
       {
         // Page indisponibilités avec la liste des périodes et les badges validé/en attente
         url: mlaIndisponibilites,
-        caption: "Gestion des indisponibilités — déclaration des absences avec validation admin.",
+        caption: "Gestion des indisponibilités : déclaration des absences avec validation admin.",
       },
 
       // ── CONFIGURATION CAMPUS ────────────────────────────────────────
       {
         // Page campus-config avec les ministères, pôles et rôles configurables
         url: mlaCampusConfig,
-        caption: "Configuration campus — gestion des ministères, pôles et rôles de compétence.",
+        caption: "Configuration campus : gestion des ministères, pôles et rôles de compétence.",
       },
 
       // ── TECHNIQUE ───────────────────────────────────────────────────
       {
         // Swagger /docs avec les groupes d'endpoints dépliés
         url: mlaSwagger,
-        caption: "API REST FastAPI — 40+ endpoints documentés, sécurisés et versionnés (OpenAPI).",
+        caption:
+          "API REST FastAPI avec plus de 40 endpoints documentés, sécurisés et versionnés (OpenAPI).",
       },
       {
         // Terminal avec "192 passed" en vert
         url: mlaTests,
         caption:
-          "Couverture de tests — 192 tests pytest, mypy strict, pylint 10/10, zéro régression.",
+          "Couverture de tests : 192 tests pytest, mypy strict, pylint 10/10, zéro régression.",
       },
       {
         // Schéma ERD base de données
         url: mlaSchema,
         caption:
-          "Modèle de données SQL — 20+ tables, multi-tenant, soft delete, migrations Alembic.",
+          "Modèle de données SQL : plus de 20 tables, multi-tenant, soft delete, migrations Alembic.",
       },
       {
         // Board Jira avec tickets organisés en sprints
         url: mlaJira,
-        caption: "Gestion de projet Agile — sprints Jira, backlog priorisé, suivi des livraisons.",
+        caption: "Gestion de projet Agile : sprints Jira, backlog priorisé, suivi des livraisons.",
       },
     ],
   },
   {
-    title: "EkolPlus — SaaS de gestion scolaire (Haïti)",
+    title: "SchoolGesti : SIS scolaire pour Konklio (Haïti)",
     category: "fullstack",
     description:
-      "SIS/ERP multi-tenant pour les écoles haïtiennes : présence, notes, bulletins PDF et facturation, avec isolation stricte des données par établissement.",
+      "Système d'information scolaire multi-établissement développé pour Konklio, une entreprise haïtienne : dossiers élèves, notes, bulletins PDF, présences et frais de scolarité, avec un back-office pour piloter plusieurs écoles clientes.",
     longDescription:
-      "SaaS de gestion scolaire conçu et développé en solo pour le marché haïtien, où les écoles gèrent encore élèves, présences et bulletins sur papier ou via des outils disparates. Le frontend est une app Next.js 15 (App Router, TypeScript, Tailwind CSS, shadcn/ui), le backend une API NestJS avec guards RBAC, et la donnée est portée par Supabase (PostgreSQL, Auth, Row Level Security). Chaque rôle — administrateur d'école, enseignant, parent, élève — a son propre tableau de bord, et l'isolation entre écoles est garantie par des policies RLS en base plutôt que par du code applicatif. L'application est déployée en conteneurs Docker sur un VPS, avec Supabase managé pour la donnée.",
+      "SchoolGesti est un SIS pensé pour des écoles qui gèrent encore élèves, présences et bulletins sur papier ou avec des outils disparates, développé pour Konklio à destination du marché haïtien puis de l'Afrique francophone. J'ai fait évoluer le projet d'une première architecture à deux services (frontend Next.js et API NestJS séparée sur Supabase) vers une application unique Next.js 16, où les Route Handlers et les Server Actions font office de backend, sans service à déployer à part. Les données passent par Prisma sur Postgres, hébergé chez Neon en serverless. Chaque établissement est isolé au niveau de la base, un même compte peut cumuler plusieurs profils (équipe de l'école, enseignant, élève), et un registre de permissions propre à chaque école pilote des rôles internes comme comptable ou secrétariat. Les bulletins sont mis en page par blocs (en-tête, notes, absences, texte libre, signatures) et générés en PDF côté serveur, assignables par niveau scolaire.",
     tags: [
-      "Next.js 15",
-      "NestJS",
+      "Next.js 16",
+      "React 19",
       "TypeScript",
-      "Supabase",
-      "PostgreSQL",
-      "Row Level Security",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Docker",
+      "Prisma",
+      "PostgreSQL (Neon)",
       "Stripe",
+      "JWT",
       "RBAC",
       "Multi-tenant",
+      "next-intl",
+      "PWA",
+      "Vitest",
     ],
     link: "#",
-    image: genEkolplus,
+    liveUrl: "https://schoolgesti.com",
+    image: sgDashboard,
     challenges: [
-      "Isolation multi-tenant portée par la base plutôt que par le code : policies RLS Postgres pilotées par profiles.tenant_id, vérifiées avec de vrais logins sur deux écoles de démonstration",
-      "Authentification globale sans slug d'école dans l'URL : le tenant est dérivé du JWT vérifié, jamais de l'adresse, pour éviter toute fuite d'information entre établissements",
-      "RBAC à quatre rôles (AdminÉcole, Enseignant, Parent, Élève) avec des tableaux de bord et des permissions distincts par profil",
-      "Génération de bulletins PDF côté serveur (NestJS + Chromium), incompatible avec un hébergement serverless — d'où le choix d'un déploiement conteneurisé sur VPS",
-      "Facturation des écoles par abonnement Stripe (checkout, portail client, webhooks et tâche planifiée de relance)",
-      "Provisioning des écoles réservé à un CLI interne exécuté côté serveur plutôt qu'à une interface web, pour ne jamais exposer de super-admin accessible depuis l'application",
+      "Isolation multi-tenant assurée par une résolution d'école côté serveur qui refuse par défaut : aucun établissement trouvé renvoie un simple 404, jamais un indice d'existence",
+      "Un même compte peut porter plusieurs profils à la fois (école, enseignant, élève) : un élève ne doit jamais voir une évaluation encore au brouillon, même via un profil enseignant ailleurs",
+      "Registre de permissions par école : des rôles internes comme comptable ou secrétariat combinent des droits unitaires, contrôlés par un test qui bloque toute nouvelle route oubliant la vérification",
+      "Pas de worker persistant possible sur un hébergement serverless : les tâches de fond passent par des tâches planifiées et un motif outbox, où les effets d'un webhook sont écrits dans la même transaction que l'événement avant d'être traités à part",
+      "Facturation Stripe par école avec un nombre de sièges resynchronisé chaque jour sur l'effectif réel d'élèves",
+      "Bulletins comme documents officiels : le moteur de mise en page reste en français par défaut, quelle que soit la langue choisie dans l'interface (français, créole haïtien, anglais)",
     ],
     results:
-      "Application déployée et validée de bout en bout sur un VPS de production : isolation RLS testée avec de vraies données sur deux écoles, RBAC vérifié (un compte enseignant reçoit bien un 403 sur les routes réservées à l'administration), parcours de connexion validé avec un vrai navigateur (Playwright). Encore en phase de test avant ouverture à de vraies écoles.",
-    detailedScreenshots: [],
+      "Plus de 2200 tests automatisés côté serveur (Vitest) et un script de vérification du parcours de connexion de bout en bout contre une instance réelle. Déployée sur Vercel avec un environnement de préproduction séparé de la production, en cours de finalisation avant l'ouverture aux premières écoles clientes de Konklio.",
+    detailedScreenshots: [
+      {
+        url: sgDashboard,
+        caption:
+          "Tableau de bord administrateur : effectifs, présence, moyennes par matière et suivi des frais de scolarité en un coup d'œil.",
+      },
+      {
+        url: sgTimetable,
+        caption:
+          "Emploi du temps hebdomadaire par classe, avec filtre par enseignant, salle et matière.",
+      },
+      {
+        url: sgCarnetNotes,
+        caption:
+          "Carnet de notes : création d'une évaluation (coefficient, barème, période) avant la saisie des notes.",
+      },
+      {
+        url: sgBulletinTemplates,
+        caption:
+          "Modèles de bulletins personnalisables par école, avec un modèle par défaut assignable par niveau.",
+      },
+      {
+        url: sgBulletinPdf,
+        caption:
+          "Bulletin généré : moyennes trimestrielles, décisions de fin d'année et signatures, prêt à imprimer.",
+      },
+      {
+        url: sgFraisScolarite,
+        caption:
+          "Suivi des frais de scolarité par élève, en gourdes haïtiennes, avec échéances et relances.",
+      },
+      {
+        url: sgPermissionsRbac,
+        caption:
+          "Gestion des rôles internes à une école : droits d'accès par module pour un rôle comme comptable ou secrétariat.",
+      },
+      {
+        url: sgEspaceEnseignant,
+        caption:
+          "Espace enseignant : classes, matières enseignées et emploi du temps de la semaine.",
+      },
+      {
+        url: sgEspaceEleve,
+        caption:
+          "Espace élève en français : moyenne générale, taux de présence et accès aux bulletins.",
+      },
+      {
+        url: sgLangues,
+        caption:
+          "Interface disponible en français, en créole haïtien et en anglais, au choix de chaque utilisateur.",
+      },
+      {
+        url: sgThemesCouleur,
+        caption:
+          "Thème de couleur personnalisable par utilisateur, sans effet sur les autres membres de l'école.",
+      },
+      {
+        url: sgProfilEleve,
+        caption:
+          "Paramètres de compte : profil, mot de passe et préférences, accessibles depuis chaque espace.",
+      },
+    ],
   },
   {
-    title: "Automatisation recherche d'emploi — n8n",
+    title: "Automatisation de la recherche d'emploi avec n8n",
     category: "automation",
     description:
       "Pipeline d'automatisation complet du suivi de candidatures : Trello, n8n, Google APIs, Telegram et une extension Chrome maison.",
@@ -305,7 +382,7 @@ export const projects: Project[] = [
       "Exposition sécurisée d'une instance locale via tunnel ngrok avec ré-enregistrement des webhooks Trello à chaque changement d'URL",
       "Extension Chrome Manifest V3 : scraping robuste des pages LinkedIn / HelloWork et création de cartes Trello via API",
       "Idempotence des relances : étiquette « Relancé » posée sur la carte pour éviter les doublons de rappels",
-      "Configuration par variables d'environnement (TRELLO_BOARD_ID) pour un workflow portable sans valeurs codées en dur",
+      "Configuration par variables d'environnement (identifiant du tableau Trello) pour un workflow portable sans valeurs codées en dur",
     ],
     results:
       "Zéro suivi manuel : chaque candidature déplacée dans « Postulé » génère automatiquement son rappel J+7 et son brouillon de relance ; un bilan chiffré (candidatures, entretiens, taux de réponse) arrive chaque vendredi sur Telegram.",
@@ -406,7 +483,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "Rapid Delivery — Optimisation de tournées",
+    title: "Rapid Delivery : optimisation de tournées",
     category: "systems",
     description:
       "Application de routage de livraisons : carte interactive, clients géolocalisés et calcul d'itinéraires réels via OSRM.",
@@ -426,7 +503,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "E-Commerce Cloud-Native — Master CERI",
+    title: "E-Commerce Cloud-Native (Master CERI)",
     category: "fullstack",
     description:
       "Boutique en ligne complète déployée sur Google Cloud : FastAPI, Vue.js, Cloud SQL, Algolia et infrastructure Terraform.",
@@ -454,11 +531,11 @@ export const projects: Project[] = [
       "Indexation du catalogue dans Algolia pour une recherche instantanée côté client",
     ],
     results:
-      "Plateforme e-commerce fonctionnelle déployée sur GCP avec recherche instantanée, base managée et environnements reproductibles — projet académique mené comme un produit réel.",
+      "Plateforme e-commerce fonctionnelle déployée sur GCP avec recherche instantanée, base managée et environnements reproductibles, un projet académique mené comme un produit réel.",
     detailedScreenshots: [],
   },
   {
-    title: "Puissance 5 (Gomoku) — Rust",
+    title: "Puissance 5 (Gomoku) en Rust",
     category: "systems",
     description:
       "Jeu de plateau en ligne de commande écrit en Rust : détection d'alignements, manches, scores et rendu coloré en terminal.",
@@ -474,7 +551,7 @@ export const projects: Project[] = [
       "Rendu du plateau lisible et coloré en terminal avec la crate colored",
     ],
     results:
-      "Jeu robuste et sans crash possible sur états invalides — un terrain d'apprentissage concret de l'ownership et du système de types de Rust.",
+      "Jeu robuste et sans crash possible sur états invalides, un bon terrain d'apprentissage pour l'ownership et le système de types de Rust.",
     detailedScreenshots: [],
   },
   {
@@ -498,7 +575,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "CeriGame — Quiz interactif Angular",
+    title: "CeriGame : quiz interactif Angular",
     category: "frontend",
     description:
       "Jeu de quiz en ligne développé avec Angular 11 : comptes joueurs, parties chronométrées et notifications.",
@@ -518,7 +595,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "HackTrash — ERP de recyclage plastique",
+    title: "HackTrash : ERP de recyclage plastique",
     category: "fullstack",
     description:
       "Plateforme web de pilotage d'une usine de recyclage : collecte, chaîne de production, ventes, RH et prédictions ML.",
