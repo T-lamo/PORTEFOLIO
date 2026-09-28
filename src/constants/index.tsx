@@ -11,11 +11,11 @@ import digiWorkflow from "../assets/projects/digi-workflow.png";
 import genAppDistribuee from "../assets/projects/gen-app-distribuee.svg";
 import genCeriGame from "../assets/projects/gen-ceri-game.svg";
 import genEcommerceCeri from "../assets/projects/gen-ecommerce-ceri.svg";
-import genEkolplus from "../assets/projects/gen-ekolplus.svg";
 import genFiveInRow from "../assets/projects/gen-five-in-row.svg";
 import genHackTrash from "../assets/projects/gen-hacktrash.svg";
 import genN8nAutomation from "../assets/projects/gen-n8n-automation.svg";
 import genRapidDelivery from "../assets/projects/gen-rapid-delivery.svg";
+import genSchoolgesti from "../assets/projects/gen-schoolgesti.svg";
 import mlaJira from "../assets/projects/mla-jira-board.png";
 import mlaPlanningDetails from "../assets/projects/mla-planning-details.png";
 import mlaSchema from "../assets/projects/mla-schema-db.png";
@@ -55,7 +55,7 @@ export const heroTexts = {
   role: "Ingénieur Logiciel Fullstack",
   subtitle: "Expertise Vue.js, Angular, TypeScript & FastAPI",
   description:
-    "Ingénieur avec 3 ans d'expérience au sein d'environnements industriels exigeants (Airbus, Anakeen). Je me spécialise dans la conception d'architectures web scalables et d'interfaces fluides. Passionné par l'innovation technique, j'allie rigueur professionnelle et créativité à travers des projets ambitieux. Disponible pour des missions de projet ou un CDI.",
+    "Ingénieur logiciel fullstack, 3 ans d'expérience dont deux missions en environnement industriel exigeant (Airbus, Anakeen). Je construis des applications web de bout en bout, du schéma de base de données à l'interface, avec une préférence pour les architectures simples à maintenir. En parallèle, je développe SchoolGesti, un SaaS de gestion scolaire pour des écoles en Haïti. Disponible pour une mission ou un CDI.",
   ctaPrimary: "Voir mes projets",
   ctaSecondary: "Me contacter",
   Tel: "+330749286021",
@@ -245,38 +245,39 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "EkolPlus — SaaS de gestion scolaire (Haïti)",
+    title: "SchoolGesti — SIS scolaire pour Konklio (Haïti)",
     category: "fullstack",
     description:
-      "SIS/ERP multi-tenant pour les écoles haïtiennes : présence, notes, bulletins PDF et facturation, avec isolation stricte des données par établissement.",
+      "Système d'information scolaire multi-établissement développé pour Konklio, une entreprise haïtienne : dossiers élèves, notes, bulletins PDF, présences et frais de scolarité, avec un back-office pour piloter plusieurs écoles clientes.",
     longDescription:
-      "SaaS de gestion scolaire conçu et développé en solo pour le marché haïtien, où les écoles gèrent encore élèves, présences et bulletins sur papier ou via des outils disparates. Le frontend est une app Next.js 15 (App Router, TypeScript, Tailwind CSS, shadcn/ui), le backend une API NestJS avec guards RBAC, et la donnée est portée par Supabase (PostgreSQL, Auth, Row Level Security). Chaque rôle — administrateur d'école, enseignant, parent, élève — a son propre tableau de bord, et l'isolation entre écoles est garantie par des policies RLS en base plutôt que par du code applicatif. L'application est déployée en conteneurs Docker sur un VPS, avec Supabase managé pour la donnée.",
+      "SchoolGesti (anciennement EkolPlus) est un SIS pensé pour des écoles qui gèrent encore élèves, présences et bulletins sur papier ou avec des outils disparates, développé pour Konklio à destination du marché haïtien puis de l'Afrique francophone. J'ai repris le projet depuis une première architecture à deux services (frontend Next.js + API NestJS séparée sur Supabase) pour la simplifier en une seule application Next.js 16 : les Route Handlers et les Server Actions font office de backend, sans service à déployer à part. Les données passent par Prisma sur Postgres, hébergé chez Neon en serverless. Chaque établissement est isolé au niveau de la base, un même compte peut cumuler plusieurs profils (équipe de l'école, enseignant, élève), et un registre de permissions propre à chaque école pilote des rôles internes comme comptable ou secrétariat. Les bulletins sont mis en page par blocs (en-tête, notes, absences, texte libre, signatures) et générés en PDF côté serveur, assignables par niveau scolaire.",
     tags: [
-      "Next.js 15",
-      "NestJS",
+      "Next.js 16",
+      "React 19",
       "TypeScript",
-      "Supabase",
-      "PostgreSQL",
-      "Row Level Security",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Docker",
+      "Prisma",
+      "PostgreSQL (Neon)",
       "Stripe",
+      "JWT",
       "RBAC",
       "Multi-tenant",
+      "next-intl",
+      "PWA",
+      "Vitest",
     ],
     link: "#",
-    image: genEkolplus,
+    liveUrl: "https://schoolgesti.com",
+    image: genSchoolgesti,
     challenges: [
-      "Isolation multi-tenant portée par la base plutôt que par le code : policies RLS Postgres pilotées par profiles.tenant_id, vérifiées avec de vrais logins sur deux écoles de démonstration",
-      "Authentification globale sans slug d'école dans l'URL : le tenant est dérivé du JWT vérifié, jamais de l'adresse, pour éviter toute fuite d'information entre établissements",
-      "RBAC à quatre rôles (AdminÉcole, Enseignant, Parent, Élève) avec des tableaux de bord et des permissions distincts par profil",
-      "Génération de bulletins PDF côté serveur (NestJS + Chromium), incompatible avec un hébergement serverless — d'où le choix d'un déploiement conteneurisé sur VPS",
-      "Facturation des écoles par abonnement Stripe (checkout, portail client, webhooks et tâche planifiée de relance)",
-      "Provisioning des écoles réservé à un CLI interne exécuté côté serveur plutôt qu'à une interface web, pour ne jamais exposer de super-admin accessible depuis l'application",
+      "Isolation multi-tenant assurée par une résolution d'école côté serveur qui refuse par défaut : aucun établissement trouvé renvoie un simple 404, jamais un indice d'existence",
+      "Un même compte peut porter plusieurs profils à la fois (école, enseignant, élève) : un élève ne doit jamais voir une évaluation encore au brouillon, même via un profil enseignant ailleurs",
+      "Registre de permissions par école : des rôles internes comme comptable ou secrétariat combinent des droits unitaires, contrôlés par un test qui bloque toute nouvelle route oubliant la vérification",
+      "Pas de worker persistant possible sur un hébergement serverless : les tâches de fond passent par des tâches planifiées et un motif outbox, où les effets d'un webhook sont écrits dans la même transaction que l'événement avant d'être traités à part",
+      "Facturation Stripe par école avec un nombre de sièges resynchronisé chaque jour sur l'effectif réel d'élèves",
+      "Bulletins comme documents officiels : le moteur de mise en page reste en français par défaut, quelle que soit la langue choisie dans l'interface (français, créole haïtien, anglais)",
     ],
     results:
-      "Application déployée et validée de bout en bout sur un VPS de production : isolation RLS testée avec de vraies données sur deux écoles, RBAC vérifié (un compte enseignant reçoit bien un 403 sur les routes réservées à l'administration), parcours de connexion validé avec un vrai navigateur (Playwright). Encore en phase de test avant ouverture à de vraies écoles.",
+      "Plus de 2200 tests automatisés côté serveur (Vitest) et un script de vérification du parcours de connexion de bout en bout contre une instance réelle. Déployée sur Vercel avec un environnement de préproduction séparé de la production, en cours de finalisation avant l'ouverture aux premières écoles clientes de Konklio.",
     detailedScreenshots: [],
   },
   {
@@ -305,7 +306,7 @@ export const projects: Project[] = [
       "Exposition sécurisée d'une instance locale via tunnel ngrok avec ré-enregistrement des webhooks Trello à chaque changement d'URL",
       "Extension Chrome Manifest V3 : scraping robuste des pages LinkedIn / HelloWork et création de cartes Trello via API",
       "Idempotence des relances : étiquette « Relancé » posée sur la carte pour éviter les doublons de rappels",
-      "Configuration par variables d'environnement (TRELLO_BOARD_ID) pour un workflow portable sans valeurs codées en dur",
+      "Configuration par variables d'environnement (identifiant du tableau Trello) pour un workflow portable sans valeurs codées en dur",
     ],
     results:
       "Zéro suivi manuel : chaque candidature déplacée dans « Postulé » génère automatiquement son rappel J+7 et son brouillon de relance ; un bilan chiffré (candidatures, entretiens, taux de réponse) arrive chaque vendredi sur Telegram.",
