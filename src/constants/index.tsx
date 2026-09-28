@@ -71,7 +71,7 @@ export const projectCategories: ProjectCategoryInfo[] = [
 
 export const projects: Project[] = [
   {
-    title: "MLA Planning — SaaS de planification",
+    title: "MLA Planning : SaaS de planification",
     category: "fullstack",
     description:
       "Plateforme SaaS multi-tenant pour la gestion des ressources humaines du Ministère de la Louange (ICC). Affectation des chantres, planning 24h/24, gestion des rôles et des absences.",
@@ -101,10 +101,10 @@ export const projects: Project[] = [
     challenges: [
       "Architecture multi-tenant : isolation stricte des données par campus avec filtres obligatoires sur chaque requête SQL",
       "Moteur de workflow d'affectation : machine à états (PROPOSE → CONFIRME → PRÉSENT / ABSENT / RETARD) avec transitions métier validées côté serveur",
-      "Sécurité JWT avancée : tokens signés HS256 avec JTI unique et blacklist en base — révocation immédiate à la déconnexion",
-      "RBAC à 4 niveaux : SuperAdmin, Admin, Responsable MLA, Membre MLA — chaque endpoint protégé via RoleChecker injectable (FastAPI Depends)",
+      "Sécurité JWT avancée : tokens signés HS256 avec JTI unique et blacklist en base, pour une révocation immédiate à la déconnexion",
+      "RBAC à 4 niveaux (SuperAdmin, Admin, Responsable MLA, Membre MLA), chaque endpoint protégé via RoleChecker injectable (FastAPI Depends)",
       "Calendrier 24h/24 multi-perspectives : vue Personnelle, Ministère ou Campus avec coloration déterministe par ministère",
-      "Pipeline CI/CD complet : isort → black → mypy (strict) → pylint 10/10 → flake8 → pytest (192 tests) — zéro tolérance aux erreurs",
+      "Pipeline CI/CD complet : isort → black → mypy (strict) → pylint 10/10 → flake8 → pytest (192 tests), zéro tolérance aux erreurs",
     ],
 
     results:
@@ -116,141 +116,145 @@ export const projects: Project[] = [
         // Page de login avec le formulaire centré et le logo
         url: mlaLogin,
         caption:
-          "Page de connexion — authentification JWT sécurisée (cookies HttpOnly, sameSite strict).",
+          "Page de connexion. Authentification JWT sécurisée avec cookies HttpOnly et sameSite strict.",
       },
       {
         // Sidebar dépliée avec toutes les sections visibles (Planning, Administration)
         url: mlaSidebar,
         caption:
-          "Navigation principale — sidebar responsive avec sections par rôle (Admin, Membre).",
+          "Navigation principale, sidebar responsive avec sections par rôle (Admin, Membre).",
       },
       {
         // Sidebar repliée en mode icônes avec le popup Planning au survol
         url: mlaSidebarCollapsed,
-        caption: "Mode compact — sidebar réduite aux icônes avec popup contextuel au survol.",
+        caption: "Mode compact : sidebar réduite aux icônes avec popup contextuel au survol.",
       },
 
       // ── CALENDRIER ──────────────────────────────────────────────────
       {
         // Vue calendrier mensuel avec créneaux colorés par ministère
         url: mlaCalendar,
-        caption: "Calendrier FullCalendar 24h/24 — vue mensuelle avec coloration par ministère.",
+        caption: "Calendrier FullCalendar 24h/24, vue mensuelle avec coloration par ministère.",
       },
       {
         // Vue calendrier en mode semaine avec créneaux détaillés
         url: mlaCalendarWeek,
-        caption: "Vue hebdomadaire — créneaux détaillés et taux de remplissage en temps réel.",
+        caption: "Vue hebdomadaire avec créneaux détaillés et taux de remplissage en temps réel.",
       },
 
       // ── GESTION DES PLANNINGS ───────────────────────────────────────
       {
         // Formulaire de création : section Activité avec le sélecteur de type
         url: mlaPlanningFormActivite,
-        caption: "Création de planning — sélection du type d'activité, dates et lieu.",
+        caption: "Création de planning : sélection du type d'activité, dates et lieu.",
       },
       {
         // Formulaire : section Créneaux avec l'heure début/fin et quota de personnes
         url: mlaPlanningFormSlots,
-        caption: "Configuration des créneaux — horaires, quota de membres requis par service.",
+        caption: "Configuration des créneaux : horaires et quota de membres requis par service.",
       },
       {
         // Formulaire : section Équipe avec picker de membres et rôles affectés
         url: mlaPlanningFormEquipe,
         caption:
-          "Affectation de l'équipe — sélection des membres par ministère et attribution des rôles.",
+          "Affectation de l'équipe, sélection des membres par ministère et attribution des rôles.",
       },
       {
         // Drawer de détail d'un planning publié avec les statuts de présence
         url: mlaPlanningDetails,
-        caption: "Détail d'un planning publié — statuts de présence (Présent / Absent / Retard).",
+        caption:
+          "Détail d'un planning publié, avec les statuts de présence (Présent, Absent, Retard).",
       },
       {
         // Boutons de transition workflow dans le drawer (Publier, Terminer, Annuler)
         url: mlaPlanningWorkflow,
-        caption: "Moteur de workflow — transitions d'état validées côté serveur (machine à états).",
+        caption: "Moteur de workflow : transitions d'état validées côté serveur (machine à états).",
       },
 
       // ── AFFECTATIONS MEMBRE ─────────────────────────────────────────
       {
         // Page mes-affectations avec section "En attente" et boutons Accepter/Refuser
         url: mlaMesAffectations,
-        caption: "Mes affectations — acceptation ou refus des propositions en temps réel.",
+        caption: "Mes affectations, avec acceptation ou refus des propositions en temps réel.",
       },
 
       // ── GESTION DES PROFILS ─────────────────────────────────────────
       {
         // Page profils admin avec grille de cards membres
         url: mlaProfiles,
-        caption: "Gestion des membres — vue admin avec recherche et filtrage par campus.",
+        caption: "Gestion des membres : vue admin avec recherche et filtrage par campus.",
       },
       {
         // Drawer profil ouvert sur la section Informations personnelles
         url: mlaProfileDrawerInfo,
-        caption: "Fiche membre — édition des informations personnelles et statut actif/inactif.",
+        caption:
+          "Fiche membre : édition des informations personnelles et du statut actif ou inactif.",
       },
       {
         // Drawer profil section Ministères & Pôles avec cases à cocher
         url: mlaProfileDrawerMinisteres,
-        caption: "Affectation ministères — rattachement aux pôles et ministères de l'organisation.",
+        caption:
+          "Affectation aux ministères : rattachement aux pôles et ministères de l'organisation.",
       },
       {
         // Drawer profil section Accès applicatif (username, mot de passe, rôles)
         url: mlaProfileDrawerAcces,
         caption:
-          "Accès applicatif — création du compte utilisateur avec RBAC depuis le même formulaire.",
+          "Accès applicatif : création du compte utilisateur avec RBAC depuis le même formulaire.",
       },
       {
         // Page super admin profiles avec dropdown campus et liste complète
         url: mlaSuperProfiles,
-        caption: "Vue SuperAdmin — accès global à tous les campus, gestion cross-tenant.",
+        caption: "Vue SuperAdmin, avec accès global à tous les campus et gestion cross-tenant.",
       },
 
       // ── INDISPONIBILITÉS ────────────────────────────────────────────
       {
         // Page indisponibilités avec la liste des périodes et les badges validé/en attente
         url: mlaIndisponibilites,
-        caption: "Gestion des indisponibilités — déclaration des absences avec validation admin.",
+        caption: "Gestion des indisponibilités : déclaration des absences avec validation admin.",
       },
 
       // ── CONFIGURATION CAMPUS ────────────────────────────────────────
       {
         // Page campus-config avec les ministères, pôles et rôles configurables
         url: mlaCampusConfig,
-        caption: "Configuration campus — gestion des ministères, pôles et rôles de compétence.",
+        caption: "Configuration campus : gestion des ministères, pôles et rôles de compétence.",
       },
 
       // ── TECHNIQUE ───────────────────────────────────────────────────
       {
         // Swagger /docs avec les groupes d'endpoints dépliés
         url: mlaSwagger,
-        caption: "API REST FastAPI — 40+ endpoints documentés, sécurisés et versionnés (OpenAPI).",
+        caption:
+          "API REST FastAPI avec plus de 40 endpoints documentés, sécurisés et versionnés (OpenAPI).",
       },
       {
         // Terminal avec "192 passed" en vert
         url: mlaTests,
         caption:
-          "Couverture de tests — 192 tests pytest, mypy strict, pylint 10/10, zéro régression.",
+          "Couverture de tests : 192 tests pytest, mypy strict, pylint 10/10, zéro régression.",
       },
       {
         // Schéma ERD base de données
         url: mlaSchema,
         caption:
-          "Modèle de données SQL — 20+ tables, multi-tenant, soft delete, migrations Alembic.",
+          "Modèle de données SQL : plus de 20 tables, multi-tenant, soft delete, migrations Alembic.",
       },
       {
         // Board Jira avec tickets organisés en sprints
         url: mlaJira,
-        caption: "Gestion de projet Agile — sprints Jira, backlog priorisé, suivi des livraisons.",
+        caption: "Gestion de projet Agile : sprints Jira, backlog priorisé, suivi des livraisons.",
       },
     ],
   },
   {
-    title: "SchoolGesti — SIS scolaire pour Konklio (Haïti)",
+    title: "SchoolGesti : SIS scolaire pour Konklio (Haïti)",
     category: "fullstack",
     description:
       "Système d'information scolaire multi-établissement développé pour Konklio, une entreprise haïtienne : dossiers élèves, notes, bulletins PDF, présences et frais de scolarité, avec un back-office pour piloter plusieurs écoles clientes.",
     longDescription:
-      "SchoolGesti (anciennement EkolPlus) est un SIS pensé pour des écoles qui gèrent encore élèves, présences et bulletins sur papier ou avec des outils disparates, développé pour Konklio à destination du marché haïtien puis de l'Afrique francophone. J'ai repris le projet depuis une première architecture à deux services (frontend Next.js + API NestJS séparée sur Supabase) pour la simplifier en une seule application Next.js 16 : les Route Handlers et les Server Actions font office de backend, sans service à déployer à part. Les données passent par Prisma sur Postgres, hébergé chez Neon en serverless. Chaque établissement est isolé au niveau de la base, un même compte peut cumuler plusieurs profils (équipe de l'école, enseignant, élève), et un registre de permissions propre à chaque école pilote des rôles internes comme comptable ou secrétariat. Les bulletins sont mis en page par blocs (en-tête, notes, absences, texte libre, signatures) et générés en PDF côté serveur, assignables par niveau scolaire.",
+      "SchoolGesti est un SIS pensé pour des écoles qui gèrent encore élèves, présences et bulletins sur papier ou avec des outils disparates, développé pour Konklio à destination du marché haïtien puis de l'Afrique francophone. J'ai fait évoluer le projet d'une première architecture à deux services (frontend Next.js et API NestJS séparée sur Supabase) vers une application unique Next.js 16, où les Route Handlers et les Server Actions font office de backend, sans service à déployer à part. Les données passent par Prisma sur Postgres, hébergé chez Neon en serverless. Chaque établissement est isolé au niveau de la base, un même compte peut cumuler plusieurs profils (équipe de l'école, enseignant, élève), et un registre de permissions propre à chaque école pilote des rôles internes comme comptable ou secrétariat. Les bulletins sont mis en page par blocs (en-tête, notes, absences, texte libre, signatures) et générés en PDF côté serveur, assignables par niveau scolaire.",
     tags: [
       "Next.js 16",
       "React 19",
@@ -281,7 +285,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "Automatisation recherche d'emploi — n8n",
+    title: "Automatisation de la recherche d'emploi avec n8n",
     category: "automation",
     description:
       "Pipeline d'automatisation complet du suivi de candidatures : Trello, n8n, Google APIs, Telegram et une extension Chrome maison.",
@@ -407,7 +411,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "Rapid Delivery — Optimisation de tournées",
+    title: "Rapid Delivery : optimisation de tournées",
     category: "systems",
     description:
       "Application de routage de livraisons : carte interactive, clients géolocalisés et calcul d'itinéraires réels via OSRM.",
@@ -427,7 +431,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "E-Commerce Cloud-Native — Master CERI",
+    title: "E-Commerce Cloud-Native (Master CERI)",
     category: "fullstack",
     description:
       "Boutique en ligne complète déployée sur Google Cloud : FastAPI, Vue.js, Cloud SQL, Algolia et infrastructure Terraform.",
@@ -455,11 +459,11 @@ export const projects: Project[] = [
       "Indexation du catalogue dans Algolia pour une recherche instantanée côté client",
     ],
     results:
-      "Plateforme e-commerce fonctionnelle déployée sur GCP avec recherche instantanée, base managée et environnements reproductibles — projet académique mené comme un produit réel.",
+      "Plateforme e-commerce fonctionnelle déployée sur GCP avec recherche instantanée, base managée et environnements reproductibles, un projet académique mené comme un produit réel.",
     detailedScreenshots: [],
   },
   {
-    title: "Puissance 5 (Gomoku) — Rust",
+    title: "Puissance 5 (Gomoku) en Rust",
     category: "systems",
     description:
       "Jeu de plateau en ligne de commande écrit en Rust : détection d'alignements, manches, scores et rendu coloré en terminal.",
@@ -475,7 +479,7 @@ export const projects: Project[] = [
       "Rendu du plateau lisible et coloré en terminal avec la crate colored",
     ],
     results:
-      "Jeu robuste et sans crash possible sur états invalides — un terrain d'apprentissage concret de l'ownership et du système de types de Rust.",
+      "Jeu robuste et sans crash possible sur états invalides, un bon terrain d'apprentissage pour l'ownership et le système de types de Rust.",
     detailedScreenshots: [],
   },
   {
@@ -499,7 +503,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "CeriGame — Quiz interactif Angular",
+    title: "CeriGame : quiz interactif Angular",
     category: "frontend",
     description:
       "Jeu de quiz en ligne développé avec Angular 11 : comptes joueurs, parties chronométrées et notifications.",
@@ -519,7 +523,7 @@ export const projects: Project[] = [
     detailedScreenshots: [],
   },
   {
-    title: "HackTrash — ERP de recyclage plastique",
+    title: "HackTrash : ERP de recyclage plastique",
     category: "fullstack",
     description:
       "Plateforme web de pilotage d'une usine de recyclage : collecte, chaîne de production, ventes, RH et prédictions ML.",
