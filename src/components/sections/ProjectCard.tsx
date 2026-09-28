@@ -27,6 +27,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
       className="glass-card group hover:border-primary/30 relative flex cursor-pointer flex-col items-center overflow-hidden rounded-[2.5rem] border border-white/5 p-6 text-center transition-all duration-500"
       onClick={onClick}
       layoutId={`card-${project.title}`}
+      transition={{ layout: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
       whileHover={{ y: -10 }}
     >
       {/* Container Image avec Overlay */}
