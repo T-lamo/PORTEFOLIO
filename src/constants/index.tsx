@@ -15,7 +15,6 @@ import genFiveInRow from "../assets/projects/gen-five-in-row.svg";
 import genHackTrash from "../assets/projects/gen-hacktrash.svg";
 import genN8nAutomation from "../assets/projects/gen-n8n-automation.svg";
 import genRapidDelivery from "../assets/projects/gen-rapid-delivery.svg";
-import genSchoolgesti from "../assets/projects/gen-schoolgesti.svg";
 import mlaJira from "../assets/projects/mla-jira-board.png";
 import mlaPlanningDetails from "../assets/projects/mla-planning-details.png";
 import mlaSchema from "../assets/projects/mla-schema-db.png";
@@ -41,6 +40,18 @@ import mlaTests from "../assets/projects/mlaTests.png";
 import portFolioMain from "../assets/projects/port_folio.png";
 import portJira from "../assets/projects/port_jira.png";
 import portUserStory from "../assets/projects/port_user_story.png";
+import sgBulletinPdf from "../assets/projects/sg-bulletin-pdf.png";
+import sgBulletinTemplates from "../assets/projects/sg-bulletin-templates.png";
+import sgCarnetNotes from "../assets/projects/sg-carnet-notes.png";
+import sgDashboard from "../assets/projects/sg-dashboard.png";
+import sgEspaceEleve from "../assets/projects/sg-espace-eleve.png";
+import sgEspaceEnseignant from "../assets/projects/sg-espace-enseignant.png";
+import sgFraisScolarite from "../assets/projects/sg-frais-scolarite.png";
+import sgLangues from "../assets/projects/sg-langues.png";
+import sgPermissionsRbac from "../assets/projects/sg-permissions-rbac.png";
+import sgProfilEleve from "../assets/projects/sg-profil-eleve.png";
+import sgThemesCouleur from "../assets/projects/sg-themes-couleur.png";
+import sgTimetable from "../assets/projects/sg-timetable.png";
 import type { Project, ProjectCategoryInfo } from "../types";
 
 export const navLinks = [
@@ -271,7 +282,7 @@ export const projects: Project[] = [
     ],
     link: "#",
     liveUrl: "https://schoolgesti.com",
-    image: genSchoolgesti,
+    image: sgDashboard,
     challenges: [
       "Isolation multi-tenant assurée par une résolution d'école côté serveur qui refuse par défaut : aucun établissement trouvé renvoie un simple 404, jamais un indice d'existence",
       "Un même compte peut porter plusieurs profils à la fois (école, enseignant, élève) : un élève ne doit jamais voir une évaluation encore au brouillon, même via un profil enseignant ailleurs",
@@ -282,7 +293,68 @@ export const projects: Project[] = [
     ],
     results:
       "Plus de 2200 tests automatisés côté serveur (Vitest) et un script de vérification du parcours de connexion de bout en bout contre une instance réelle. Déployée sur Vercel avec un environnement de préproduction séparé de la production, en cours de finalisation avant l'ouverture aux premières écoles clientes de Konklio.",
-    detailedScreenshots: [],
+    detailedScreenshots: [
+      {
+        url: sgDashboard,
+        caption:
+          "Tableau de bord administrateur : effectifs, présence, moyennes par matière et suivi des frais de scolarité en un coup d'œil.",
+      },
+      {
+        url: sgTimetable,
+        caption:
+          "Emploi du temps hebdomadaire par classe, avec filtre par enseignant, salle et matière.",
+      },
+      {
+        url: sgCarnetNotes,
+        caption:
+          "Carnet de notes : création d'une évaluation (coefficient, barème, période) avant la saisie des notes.",
+      },
+      {
+        url: sgBulletinTemplates,
+        caption:
+          "Modèles de bulletins personnalisables par école, avec un modèle par défaut assignable par niveau.",
+      },
+      {
+        url: sgBulletinPdf,
+        caption:
+          "Bulletin généré : moyennes trimestrielles, décisions de fin d'année et signatures, prêt à imprimer.",
+      },
+      {
+        url: sgFraisScolarite,
+        caption:
+          "Suivi des frais de scolarité par élève, en gourdes haïtiennes, avec échéances et relances.",
+      },
+      {
+        url: sgPermissionsRbac,
+        caption:
+          "Gestion des rôles internes à une école : droits d'accès par module pour un rôle comme comptable ou secrétariat.",
+      },
+      {
+        url: sgEspaceEnseignant,
+        caption:
+          "Espace enseignant : classes, matières enseignées et emploi du temps de la semaine.",
+      },
+      {
+        url: sgEspaceEleve,
+        caption:
+          "Espace élève en français : moyenne générale, taux de présence et accès aux bulletins.",
+      },
+      {
+        url: sgLangues,
+        caption:
+          "Interface disponible en français, en créole haïtien et en anglais, au choix de chaque utilisateur.",
+      },
+      {
+        url: sgThemesCouleur,
+        caption:
+          "Thème de couleur personnalisable par utilisateur, sans effet sur les autres membres de l'école.",
+      },
+      {
+        url: sgProfilEleve,
+        caption:
+          "Paramètres de compte : profil, mot de passe et préférences, accessibles depuis chaque espace.",
+      },
+    ],
   },
   {
     title: "Automatisation de la recherche d'emploi avec n8n",
